@@ -1,4 +1,4 @@
-import NextAuth, { User, type NextAuthOptions } from 'next-auth'
+import NextAuth, { type NextAuthOptions } from 'next-auth'
 import SpotifyProvider from 'next-auth/providers/spotify'
 
 // Prisma adapter for NextAuth, optional and can be removed
@@ -60,11 +60,9 @@ export const authOptions: NextAuthOptions = {
       return token
     },
     async session({ session, token }) {
-      session.user = token.user as User
       session.accessToken = token.accessToken
       session.refreshToken = token.refreshToken
       session.error = token.error
-
       return session
     },
   },
