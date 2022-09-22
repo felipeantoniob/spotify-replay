@@ -5,6 +5,7 @@ import SpotifyProvider from 'next-auth/providers/spotify'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { prisma } from '../../../server/db/client'
 import { env } from '../../../env/server.mjs'
+import { SessionWithTokens } from '../../../server/router/context'
 
 const scopes = [
   // "ugc-image-upload",
@@ -62,8 +63,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       session.accessToken = token.accessToken
       session.refreshToken = token.refreshToken
-      session.error = token.error
-      return session
+      return session as SessionWithTokens
     },
   },
   theme: {
