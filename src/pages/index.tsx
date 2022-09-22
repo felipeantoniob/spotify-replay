@@ -1,17 +1,18 @@
 import type { NextPage } from 'next'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
+// import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import { trpc } from '../utils/trpc'
 
 const Home: NextPage = () => {
-  const router = useRouter()
+  // const router = useRouter()
   useSession({
     required: true,
     onUnauthenticated() {
-      router.push('/')
+      console.log('unauthenticated')
+      // router.push('/')
     },
   })
 
@@ -35,13 +36,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className="container mx-auto flex flex-col items-center justify-center min-h-screen p-4">
+      <main className="container mx-auto flex min-h-screen flex-col items-center justify-center p-4">
         <button onClick={() => signIn('spotify', { callbackUrl: '/' })}>LOG IN TO SPOTIFY</button>
         <button onClick={() => signOut()}>LOG OUT OF SPOTIFY</button>
-        <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
+        <h1 className="text-5xl font-extrabold leading-normal text-gray-700 md:text-[5rem]">
           Create <span className="text-purple-300">T3</span> App
         </h1>
-        <div className="pt-6 text-2xl text-blue-500 flex justify-center items-center w-full"></div>
+        <div className="flex w-full items-center justify-center pt-6 text-2xl text-blue-500"></div>
       </main>
     </>
   )

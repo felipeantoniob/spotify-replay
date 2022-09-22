@@ -1,62 +1,48 @@
-import { useRouter } from 'next/router'
+import Link from 'next/link'
+import { ReactNode } from 'react'
+import { BsMusicNoteBeamed, BsPersonFill, BsSpotify } from 'react-icons/bs'
+import { FiPieChart } from 'react-icons/fi'
+import { GiMicrophone } from 'react-icons/gi'
+import { MdHistory } from 'react-icons/md'
+
+const NavButton = ({ children, href }: { children: ReactNode; href: string }) => (
+  <Link href={href} passHref>
+    <div className="btn btn-ghost no-animation flex flex-col text-sm normal-case text-gray-400 hover:bg-transparent hover:text-gray-200">
+      {children}
+    </div>
+  </Link>
+)
 
 const Navbar = () => {
-  const router = useRouter()
-
   return (
-    <div className="sticky top-0 z-10 flex justify-center bg-black/75">
-      <div className="navbar flex max-w-7xl justify-between">
-        <div className="">
-          <a
-            onClick={() => router.push('/')}
-            className="btn btn-ghost bg-transparent text-xl normal-case text-gray-400 hover:bg-transparent hover:text-gray-200"
-          >
-            Home
-          </a>
-        </div>
+    <div className="sticky top-0 z-10 flex h-20 justify-center bg-black/75">
+      <nav className="navbar flex justify-between">
+        <NavButton href="/profile">
+          <BsSpotify size="48px" className="text-green-600 hover:text-green-500" />
+        </NavButton>
         <div>
-          <div className="">
-            <a
-              onClick={() => router.push('/profile')}
-              className="btn btn-ghost bg-transparent text-xl normal-case text-gray-400 hover:bg-transparent hover:text-gray-200"
-            >
-              Profile
-            </a>
-          </div>
-          <div className="">
-            <a
-              onClick={() => router.push('/artists')}
-              className="btn btn-ghost bg-transparent text-xl normal-case text-gray-400 hover:bg-transparent hover:text-gray-200"
-            >
-              Top Artists
-            </a>
-          </div>
-          <div className="">
-            <a
-              onClick={() => router.push('/tracks')}
-              className="btn btn-ghost bg-transparent text-xl normal-case text-gray-400 hover:bg-transparent hover:text-gray-200"
-            >
-              Top Tracks
-            </a>
-          </div>
-          <div className="">
-            <a
-              onClick={() => router.push('/genres')}
-              className="btn btn-ghost bg-transparent text-xl normal-case text-gray-400 hover:bg-transparent hover:text-gray-200"
-            >
-              Top Genres
-            </a>
-          </div>
-          <div className="">
-            <a
-              onClick={() => router.push('/recent')}
-              className="btn btn-ghost bg-transparent text-xl normal-case text-gray-400 hover:bg-transparent hover:text-gray-200"
-            >
-              Recent
-            </a>
-          </div>
+          <NavButton href="/profile">
+            <BsPersonFill size="24px" />
+            <p>Profile</p>
+          </NavButton>
+          <NavButton href="/artists">
+            <GiMicrophone size="24px" />
+            Top Artists
+          </NavButton>
+          <NavButton href="/tracks">
+            <BsMusicNoteBeamed size="24px" />
+            Top Tracks
+          </NavButton>
+          <NavButton href="/genres">
+            <FiPieChart size="24px" />
+            Top Genres
+          </NavButton>
+          <NavButton href="/recent">
+            <MdHistory size="24px" />
+            Recent
+          </NavButton>
         </div>
-      </div>
+      </nav>
     </div>
   )
 }
