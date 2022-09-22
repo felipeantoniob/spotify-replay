@@ -8,6 +8,7 @@ import type { AppType } from 'next/app'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import superjson from 'superjson'
+import Navbar from '../components/Navbar'
 import type { AppRouter } from '../server/router'
 import '../styles/globals.css'
 const queryClient = new QueryClient()
@@ -19,6 +20,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <QueryClientProvider client={queryClient}>
       <SessionProvider session={session}>
+        <Navbar />
         <Component {...pageProps} />
       </SessionProvider>
       <ReactQueryDevtools initialIsOpen={true} />
