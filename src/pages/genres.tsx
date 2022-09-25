@@ -1,9 +1,18 @@
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import GenrePieChart from '../components/GenrePieChart'
 import Header from '../components/Header'
 import type { TimeRangeType } from '../components/TimeRangeRadio'
 import TimeRangeRadio from '../components/TimeRangeRadio'
+import type { GenreObject } from '../utils/getGenreChartData'
+import {
+  getAllArtistsGenres,
+  getGenreChartData,
+  getGenreFrequency,
+  getTopGenres,
+} from '../utils/index'
+import { trpc } from '../utils/trpc'
 
 const Genres = () => {
   const router = useRouter()
@@ -14,13 +23,41 @@ const Genres = () => {
     },
   })
   const [timeRange, setTimeRange] = useState<TimeRangeType>('short_term')
+  const userTopArtistsQuery = trpc.useQuery(
+    ['spotify.getUserTopArtists', { timeRange, limit: 50 }],
+    {
+      keepPreviousData: true,
+      refetchOnWindowFocus: false,
+    }
+  )
 
+  let topArtists: SpotifyApi.ArtistObjectFull[] | null = null
+  let genreChartData: GenreObject[] = []
+
+  if (userTopArtistsQuery.isSuccess) {
+    topArtists = userTopArtistsQuery.data.items
+    const genresArray = getAllArtistsGenres(topArtists)
+    const genreFrequencyArray = getGenreFrequency(genresArray)
+    console.log(genreFrequencyArray)
+    const topGenresArray = getTopGenres(genreFrequencyArray, 20)
+    const genresArtistsObject = getGenreChartData(topGenresArray, topArtists)
+    genreChartData = genresArtistsObject
+  }
   return (
-    <main className="pt-16">
+    <main className="pt-8">
       <div className="container mx-auto max-w-7xl">
         <Header title="Top Genres">
           <TimeRangeRadio timeRange={timeRange} setTimeRange={setTimeRange} />
         </Header>
+        {genreChartData && (
+          <div className="flex justify-center pb-16">
+            <div className="w-full md:w-3/4 lg:w-1/2">
+              {genreChartData && topArtists && (
+                <GenrePieChart genreChartData={genreChartData} topArtists={topArtists} />
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </main>
   )
