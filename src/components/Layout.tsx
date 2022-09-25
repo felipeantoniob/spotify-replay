@@ -1,12 +1,13 @@
 import { useSession } from 'next-auth/react'
 import { ReactNode } from 'react'
 import SpotifyPlayer from 'react-spotify-web-playback'
-import { useUriStore } from '../store/index'
+import { useStore } from '../store/index'
 import Navbar from './Navbar'
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const { data: session } = useSession()
-  const uri = useUriStore((state) => state.uri)
+  const uri = useStore((state) => state.uri)
+  const isPlaying = useStore((state) => state.isPlaying)
 
   let accessToken = ''
 
@@ -26,6 +27,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
             autoPlay
             initialVolume={0.5}
             token={accessToken}
+            play={isPlaying}
             uris={['spotify:track:' + uri]}
             showSaveIcon
             styles={{

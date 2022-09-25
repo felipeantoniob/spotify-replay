@@ -14,10 +14,7 @@ const Recent = () => {
     },
   })
 
-  const userRecentTracksQuery = trpc.useQuery(['spotify.getUserRecentTracks', { limit: 50 }], {
-    keepPreviousData: true,
-    refetchOnWindowFocus: false,
-  })
+  const userRecentTracksQuery = trpc.useQuery(['spotify.getUserRecentTracks', { limit: 50 }])
 
   let recentTracks: SpotifyApi.TrackObjectFull[] | null = null
 
