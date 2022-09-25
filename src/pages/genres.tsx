@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import GenrePieChart from '../components/GenrePieChart'
 import Header from '../components/Header'
+import Spinner from '../components/Spinner'
 import type { TimeRangeType } from '../components/TimeRangeRadio'
 import TimeRangeRadio from '../components/TimeRangeRadio'
 import type { GenreObject } from '../utils/getGenreChartData'
@@ -38,28 +39,31 @@ const Genres = () => {
     topArtists = userTopArtistsQuery.data.items
     const genresArray = getAllArtistsGenres(topArtists)
     const genreFrequencyArray = getGenreFrequency(genresArray)
-    console.log(genreFrequencyArray)
     const topGenresArray = getTopGenres(genreFrequencyArray, 20)
     const genresArtistsObject = getGenreChartData(topGenresArray, topArtists)
     genreChartData = genresArtistsObject
   }
   return (
-    <main className="pt-8">
-      <div className="container mx-auto max-w-7xl">
-        <Header title="Top Genres">
-          <TimeRangeRadio timeRange={timeRange} setTimeRange={setTimeRange} />
-        </Header>
-        {genreChartData && (
-          <div className="flex justify-center pb-16">
-            <div className="w-full md:w-3/4 lg:w-1/2">
-              {genreChartData && topArtists && (
-                <GenrePieChart genreChartData={genreChartData} topArtists={topArtists} />
-              )}
-            </div>
+    <>
+      <Header title="Top Genres">
+        <TimeRangeRadio timeRange={timeRange} setTimeRange={setTimeRange} />
+      </Header>
+      {genreChartData ? (
+        <div className="flex justify-center pb-16">
+          <div className="w-full md:w-3/4 lg:w-1/2">
+            {genreChartData && topArtists && (
+              <GenrePieChart genreChartData={genreChartData} topArtists={topArtists} />
+            )}
           </div>
-        )}
-      </div>
-    </main>
+        </div>
+      ) : (
+        <div className="h-screen">
+          <div className="h-1/2">
+            <Spinner />
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 

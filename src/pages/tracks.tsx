@@ -30,26 +30,24 @@ const Tracks = () => {
   }
 
   return (
-    <main className="pt-16">
-      <div className="container mx-auto max-w-7xl">
-        <Header title="Top Tracks">
-          <TimeRangeRadio timeRange={timeRange} setTimeRange={setTimeRange} />
-        </Header>
-        {topTracks ? (
-          <div className="flex flex-col">
-            {userTopTracksQuery.data?.items.map((track, index) => (
-              <Track key={track.id} track={track} index={index} />
-            ))}
+    <>
+      <Header title="Top Tracks">
+        <TimeRangeRadio timeRange={timeRange} setTimeRange={setTimeRange} />
+      </Header>
+      {topTracks ? (
+        <div className="flex flex-col px-4">
+          {topTracks.map((track, index) => (
+            <Track key={track.id} track={track} index={index} showIndex showAlbum showDuration />
+          ))}
+        </div>
+      ) : (
+        <div className="h-screen">
+          <div className="h-1/2">
+            <Spinner />
           </div>
-        ) : (
-          <div className="h-screen">
-            <div className="h-1/2">
-              <Spinner />
-            </div>
-          </div>
-        )}
-      </div>
-    </main>
+        </div>
+      )}
+    </>
   )
 }
 

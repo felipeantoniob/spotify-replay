@@ -8,7 +8,7 @@ import type { AppType } from 'next/app'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import superjson from 'superjson'
-import Navbar from '../components/Navbar'
+import Layout from '../components/Layout'
 import type { AppRouter } from '../server/router'
 import '../styles/globals.css'
 const queryClient = new QueryClient()
@@ -20,8 +20,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <QueryClientProvider client={queryClient}>
       <SessionProvider session={session}>
-        <Navbar />
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </SessionProvider>
       <ReactQueryDevtools initialIsOpen={true} />
     </QueryClientProvider>
@@ -35,6 +36,7 @@ const getBaseUrl = () => {
 }
 
 export default withTRPC<AppRouter>({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   config({ ctx }) {
     /**
      * If you want to use SSR, you need to use the server's full URL

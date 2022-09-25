@@ -7,7 +7,7 @@ import { MdHistory } from 'react-icons/md'
 
 const NavButton = ({ children, href }: { children: ReactNode; href: string }) => (
   <Link href={href} passHref>
-    <div className="btn btn-ghost no-animation flex flex-col text-sm normal-case text-gray-400 hover:bg-transparent hover:text-gray-200">
+    <div className="btn btn-ghost no-animation flex flex-col text-sm normal-case text-gray-400 transition-all hover:bg-transparent hover:text-gray-200">
       {children}
     </div>
   </Link>
@@ -18,7 +18,7 @@ const Navbar = () => {
     <div className="sticky top-0 z-10 flex h-20 justify-center bg-black/75">
       <nav className="navbar flex justify-between">
         <NavButton href="/profile">
-          <BsSpotify size="48px" className="text-green-600 hover:text-green-500" />
+          <BsSpotify size="48px" className="text-green-600 transition-all hover:text-green-500" />
         </NavButton>
         <div>
           <NavButton href="/profile">

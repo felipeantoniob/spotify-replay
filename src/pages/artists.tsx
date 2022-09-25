@@ -33,26 +33,24 @@ const Artists = () => {
   }
 
   return (
-    <main className="pt-16">
-      <div className="container mx-auto max-w-7xl">
-        <Header title="Top Artists">
-          <TimeRangeRadio timeRange={timeRange} setTimeRange={setTimeRange} />
-        </Header>
-        {topArtists ? (
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            {userTopArtistsQuery.data?.items.map((artist) => (
-              <Artist key={artist.id} {...artist} />
-            ))}
+    <>
+      <Header title="Top Artists">
+        <TimeRangeRadio timeRange={timeRange} setTimeRange={setTimeRange} />
+      </Header>
+      {topArtists ? (
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          {topArtists.map((artist) => (
+            <Artist key={artist.id} {...artist} />
+          ))}
+        </div>
+      ) : (
+        <div className="h-screen">
+          <div className="h-1/2">
+            <Spinner />
           </div>
-        ) : (
-          <div className="h-screen">
-            <div className="h-1/2">
-              <Spinner />
-            </div>
-          </div>
-        )}
-      </div>
-    </main>
+        </div>
+      )}
+    </>
   )
 }
 
