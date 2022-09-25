@@ -17,7 +17,7 @@ const RadioButton = ({ timeRange, handleChange, value, label }: RadioButtonProps
     value={value}
     checked={timeRange === value}
     onChange={handleChange}
-    className="border:none btn btn-ghost no-animation border-transparent bg-transparent capitalize text-gray-400 underline-offset-8 checked:bg-transparent checked:text-gray-200 checked:underline"
+    className="border:none btn btn-ghost no-animation border-transparent bg-transparent capitalize text-gray-400 underline-offset-8 checked:bg-transparent checked:text-gray-200 checked:underline hover:text-gray-200"
   />
 )
 
