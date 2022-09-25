@@ -48,3 +48,37 @@ export const spotifyRouter = createProtectedRouter()
       return response.body
     },
   })
+  .query('getUserRecentTracks', {
+    input: z.object({
+      limit: z.number(),
+    }),
+    async resolve({ ctx, input }) {
+      const spotifyApi = await initializeSpotifyApi(
+        ctx.session.accessToken,
+        ctx.session.refreshToken
+      )
+      const { limit } = input
+
+      const response = await spotifyApi.getMyRecentlyPlayedTracks({
+        limit,
+      })
+      if (response.statusCode !== 200) {
+        throw new Error('Network response was not ok')
+      }
+      return response.body
+    },
+  })
+  .query('getUserInfo', {
+    async resolve({ ctx }) {
+      const spotifyApi = await initializeSpotifyApi(
+        ctx.session.accessToken,
+        ctx.session.refreshToken
+      )
+
+      const response = await spotifyApi.getMe()
+      if (response.statusCode !== 200) {
+        throw new Error('Network response was not ok')
+      }
+      return response
+    },
+  })
