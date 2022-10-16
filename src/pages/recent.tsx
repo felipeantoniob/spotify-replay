@@ -26,7 +26,7 @@ const Recent = () => {
     <>
       <Header title="Recent Tracks" />
       {recentTracks ? (
-        <div className="flex flex-col px-4">
+        <div className="flex flex-col px-4 pb-40">
           {recentTracks.map((track, index) => (
             <Track key={track.id} track={track} index={index} showIndex showAlbum showDuration />
           ))}

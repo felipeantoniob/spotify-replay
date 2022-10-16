@@ -38,7 +38,7 @@ const Artists = () => {
         <TimeRangeRadio timeRange={timeRange} setTimeRange={setTimeRange} />
       </Header>
       {topArtists ? (
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="grid pb-40 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {topArtists.map((artist) => (
             <Artist key={artist.id} {...artist} />
           ))}

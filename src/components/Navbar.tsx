@@ -16,7 +16,7 @@ const NavButton = ({ children, href }: { children: ReactNode; href: string }) =>
 const Navbar = () => {
   return (
     <>
-      <div className="sticky top-0 z-10 flex h-20 justify-center bg-black/75">
+      <div className="sticky top-0 z-10 flex h-20 justify-center bg-black/80">
         <nav className="navbar justify-between">
           <div className="navbar-start">
             <NavButton href="/profile">
@@ -50,9 +50,9 @@ const Navbar = () => {
               </NavButton>
             </ul>
           </div>
-          <div className="navbar-end  md:hidden">
-            <div className="dropdown dropdown-end">
-              <label tabIndex={0} className="btn btn-ghost md:hidden">
+          <div className="navbar-end md:hidden">
+            <div className="dropdown-end dropdown">
+              <label tabIndex={0} className="btn border-0 bg-black hover:text-gray-200 md:hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -70,7 +70,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="dropdown-content  menu rounded-box menu-compact mt-3 w-40 bg-gray-900 p-2 shadow"
+                className="dropdown-content menu rounded-box menu-compact mt-3 w-40 bg-[#121212] p-2 shadow"
               >
                 <NavButton href="/profile">
                   <BsPersonFill size="24px" className="mr-2" />

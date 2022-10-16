@@ -72,7 +72,7 @@ const Profile = () => {
           <Button text="Sign Out" onClick={() => signOut()} />
         </div>
       </div>
-      <div className="mx-8 grid max-w-6xl md:grid-cols-2">
+      <div className="mx-8 flex flex-col md:grid md:grid-cols-2">
         <div className="flex-1 p-4">
           <h3 className="mb-8 text-lg font-bold">Top Artists of All Time</h3>
           {userTopArtists.map((artist: SpotifyApi.ArtistObjectFull) => (

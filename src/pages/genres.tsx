@@ -49,7 +49,7 @@ const Genres = () => {
         <TimeRangeRadio timeRange={timeRange} setTimeRange={setTimeRange} />
       </Header>
       {genreChartData ? (
-        <div className="flex justify-center pb-16">
+        <div className="flex h-screen justify-center pb-16">
           <div className="w-full md:w-3/4 lg:w-1/2">
             {genreChartData && topArtists && (
               <GenrePieChart genreChartData={genreChartData} topArtists={topArtists} />
