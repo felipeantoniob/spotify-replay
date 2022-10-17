@@ -20,6 +20,8 @@ interface PlaylistSlice {
   description: string
   setTitle: (title: string) => void
   setDescription: (description: string) => void
+  tracksUriArray: string[]
+  setTracksUriArray: (tracksUriArray: string[]) => void
 }
 const createPlaylistSlice: StateCreator<PlaybackSlice & PlaylistSlice, [], [], PlaylistSlice> = (
   set
@@ -28,9 +30,27 @@ const createPlaylistSlice: StateCreator<PlaybackSlice & PlaylistSlice, [], [], P
   description: '',
   setTitle: (title) => set({ title }),
   setDescription: (description) => set({ description }),
+  tracksUriArray: [],
+  setTracksUriArray: (tracksUriArray) => set({ tracksUriArray }),
 })
 
-export const useBoundStore = create<PlaybackSlice & PlaylistSlice>()((...a) => ({
+interface TimeRangeSlice {
+  timeRange: 'long_term' | 'medium_term' | 'short_term'
+  setTimeRange: (timeRange: 'long_term' | 'medium_term' | 'short_term') => void
+}
+
+const createTimeRangeSlice: StateCreator<
+  TimeRangeSlice & TimeRangeSlice,
+  [],
+  [],
+  TimeRangeSlice
+> = (set) => ({
+  timeRange: 'short_term',
+  setTimeRange: (timeRange) => set({ timeRange }),
+})
+
+export const useBoundStore = create<PlaybackSlice & PlaylistSlice & TimeRangeSlice>()((...a) => ({
   ...createPlaybackSlice(...a),
   ...createPlaylistSlice(...a),
+  ...createTimeRangeSlice(...a),
 }))

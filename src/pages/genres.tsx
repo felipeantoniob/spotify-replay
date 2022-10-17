@@ -1,11 +1,10 @@
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
 import GenrePieChart from '../components/GenrePieChart'
 import Header from '../components/Header'
 import Spinner from '../components/Spinner'
-import type { TimeRangeType } from '../components/TimeRangeRadio'
 import TimeRangeRadio from '../components/TimeRangeRadio'
+import { useBoundStore } from '../store/index'
 import type { GenreObject } from '../utils/getGenreChartData'
 import {
   getAllArtistsGenres,
@@ -23,7 +22,8 @@ const Genres = () => {
       router.push('/')
     },
   })
-  const [timeRange, setTimeRange] = useState<TimeRangeType>('short_term')
+  const timeRange = useBoundStore((state) => state.timeRange)
+  const setTimeRange = useBoundStore((state) => state.setTimeRange)
   const userTopArtistsQuery = trpc.useQuery(
     ['spotify.getUserTopArtists', { timeRange, limit: 50 }],
     {

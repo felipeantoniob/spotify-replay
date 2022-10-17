@@ -1,4 +1,4 @@
-import { ChangeEventHandler, Dispatch, SetStateAction } from 'react'
+import { ChangeEventHandler } from 'react'
 
 export type TimeRangeType = 'long_term' | 'medium_term' | 'short_term'
 
@@ -23,7 +23,7 @@ const RadioButton = ({ timeRange, handleChange, value, label }: RadioButtonProps
 
 type TimeRangeRadioProps = {
   timeRange: TimeRangeType
-  setTimeRange: Dispatch<SetStateAction<TimeRangeType>>
+  setTimeRange: (timeRange: TimeRangeType) => void
 }
 
 const TimeRangeRadio = ({ timeRange, setTimeRange }: TimeRangeRadioProps): JSX.Element => {

@@ -1,11 +1,10 @@
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
 import Artist from '../components/Artist'
 import Header from '../components/Header'
 import Spinner from '../components/Spinner'
-import type { TimeRangeType } from '../components/TimeRangeRadio'
 import TimeRangeRadio from '../components/TimeRangeRadio'
+import { useBoundStore } from '../store/index'
 import { trpc } from '../utils/trpc'
 
 const Artists = () => {
@@ -16,8 +15,9 @@ const Artists = () => {
       router.push('/')
     },
   })
+  const timeRange = useBoundStore((state) => state.timeRange)
+  const setTimeRange = useBoundStore((state) => state.setTimeRange)
 
-  const [timeRange, setTimeRange] = useState<TimeRangeType>('short_term')
   const userTopArtistsQuery = trpc.useQuery(
     ['spotify.getUserTopArtists', { timeRange, limit: 50 }],
     {

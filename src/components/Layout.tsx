@@ -21,10 +21,6 @@ const Layout = ({ children }: { children: ReactNode }) => {
     accessToken = session.accessToken as string
   }
 
-  console.log(accessToken)
-
-  console.log(uri)
-
   return (
     <>
       <Head>
