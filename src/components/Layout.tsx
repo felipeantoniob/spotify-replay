@@ -21,6 +21,32 @@ const Layout = ({ children }: { children: ReactNode }) => {
     accessToken = session.accessToken as string
   }
 
+  const getFooterTitle = (pathname: string) => {
+    switch (pathname) {
+      case '/artists':
+        return 'Create Top Tracks playlist'
+      case '/tracks':
+        return 'Create Top Artists playlist'
+      case '/recent':
+        return 'Create Recently Played playlist'
+      default:
+        return ''
+    }
+  }
+
+  const getFooterDescription = (pathname: string) => {
+    switch (pathname) {
+      case '/artists':
+        return 'This creates a playlist from your Top 20 artists with Top 5 tracks from each artist in random order.'
+      case '/tracks':
+        return 'This creates a playlist of your top 50 tracks.'
+      case '/recent':
+        return 'This creates a playlist of your 50 most recently played tracks.'
+      default:
+        return ''
+    }
+  }
+
   return (
     <>
       <Head>
@@ -37,8 +63,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
       {['/artists', '/tracks', '/recent'].includes(router.pathname) && (
         <CreatePlaylistFooter
           isVisibleOnScroll={isVisibleOnScroll}
-          title="Create Top Tracks playlist"
-          description="This creates a playlist of your top 50 tracks."
+          title={getFooterTitle(router.pathname)}
+          description={getFooterDescription(router.pathname)}
         />
       )}
       {accessToken && (
