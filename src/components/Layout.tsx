@@ -18,7 +18,6 @@ const Layout = ({ children }: { children: ReactNode }) => {
   const router = useRouter()
 
   if (session) {
-    console.log(accessToken)
     accessToken = session.accessToken as string
   }
 
