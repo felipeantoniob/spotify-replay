@@ -14,6 +14,9 @@ import {
 } from '../utils/index'
 import { trpc } from '../utils/trpc'
 
+let topArtists: SpotifyApi.ArtistObjectFull[] | null = null
+let genreChartData: GenreObject[] = []
+
 const Genres = () => {
   const router = useRouter()
   useSession({
@@ -31,9 +34,6 @@ const Genres = () => {
       refetchOnWindowFocus: false,
     }
   )
-
-  let topArtists: SpotifyApi.ArtistObjectFull[] | null = null
-  let genreChartData: GenreObject[] = []
 
   if (userTopArtistsQuery.isSuccess) {
     topArtists = userTopArtistsQuery.data.items

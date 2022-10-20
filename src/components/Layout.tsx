@@ -18,6 +18,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   const router = useRouter()
 
   if (session) {
+    console.log(accessToken)
     accessToken = session.accessToken as string
   }
 
@@ -74,7 +75,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
             initialVolume={0.5}
             token={accessToken}
             play={isPlaying}
-            uris={[uri && `spotify:track:${uri}`]}
+            uris={uri ? [`spotify:track:${uri}`] : undefined}
             showSaveIcon
             styles={{
               bgColor: '#121212',

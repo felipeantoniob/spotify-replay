@@ -83,10 +83,11 @@ const CreatePlaylistFooter = ({
             <h6>{description}</h6>
           </div>
           <button
+            disabled={createPlaylist.isLoading}
             onClick={() => handleCreatePlaylist(tracksUriArray)}
-            className="rounded-full bg-green-800 px-4 py-3 font-bold text-gray-200 transition-all hover:bg-green-700"
+            className="h-12 w-32 rounded-full bg-green-800 font-bold text-gray-200 transition-all hover:bg-green-700 disabled:bg-green-900"
           >
-            Create Playlist
+            {createPlaylist.isLoading ? 'Loading...' : 'Create Playlist'}
           </button>
         </div>
       </footer>

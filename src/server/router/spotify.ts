@@ -144,3 +144,36 @@ export const spotifyRouter = createProtectedRouter()
       return
     },
   })
+  .query('getMultipleArtistsTopTracks', {
+    input: z.object({
+      artistsIdArray: z.string().array(),
+      artistsLimit: z.number(),
+      tracksLimit: z.number(),
+    }),
+    async resolve({ ctx, input }) {
+      const spotifyApi = await initializeSpotifyApi(
+        ctx.session.accessToken,
+        ctx.session.refreshToken
+      )
+      const { artistsIdArray, artistsLimit, tracksLimit } = input
+
+      let topArtistTopTracks: SpotifyApi.TrackObjectFull[] = []
+
+      const filteredArtistsIdArray = artistsIdArray.slice(0, artistsLimit)
+
+      for (const id of filteredArtistsIdArray) {
+        const response = await spotifyApi.getArtistTopTracks(id, 'US')
+
+        if (response.statusCode !== 200) {
+          throw new Error('Network response was not ok')
+        }
+
+        const topTracks = response.body.tracks
+
+        const filteredTopTracks = topTracks.slice(0, tracksLimit)
+
+        topArtistTopTracks = [...topArtistTopTracks, ...filteredTopTracks]
+      }
+      return topArtistTopTracks
+    },
+  })

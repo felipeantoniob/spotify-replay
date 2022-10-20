@@ -58,7 +58,7 @@ const CreatedPlaylistModal = ({
                   />
                 )}
                 <h6 className="mt-4 text-xl font-bold">{playlistDetails.name}</h6>
-                <button className="mt-8 mb-8 rounded-full bg-green-800 px-4 py-3 font-bold text-gray-200 transition-all hover:bg-green-700">
+                <button className="mt-8 mb-8 rounded-full bg-green-800 px-4 py-3  font-bold text-gray-200 transition-all hover:bg-green-700">
                   Open on Spotify
                 </button>
               </Dialog.Panel>
