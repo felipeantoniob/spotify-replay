@@ -14,6 +14,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   const { data: session } = useSession()
   const uri = useBoundStore((state) => state.uri)
   const isPlaying = useBoundStore((state) => state.isPlaying)
+  const setIsPlaying = useBoundStore((state) => state.setIsPlaying)
   const { isVisibleOnScroll } = useVisibleOnScroll(300)
   const router = useRouter()
 
@@ -60,17 +61,18 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <main className="pt-8">
         <div className="container mx-auto max-w-7xl">{children}</div>
       </main>
-      {['/artists', '/tracks', '/recent'].includes(router.pathname) && (
-        <CreatePlaylistFooter
-          isVisibleOnScroll={isVisibleOnScroll}
-          title={getFooterTitle(router.pathname)}
-          description={getFooterDescription(router.pathname)}
-        />
-      )}
-      {accessToken && (
-        <div className="fixed bottom-0 left-0 right-0">
+      <div className="fixed bottom-0 left-0 right-0">
+        {['/artists', '/tracks', '/recent'].includes(router.pathname) && (
+          <CreatePlaylistFooter
+            isVisibleOnScroll={isVisibleOnScroll}
+            title={getFooterTitle(router.pathname)}
+            description={getFooterDescription(router.pathname)}
+          />
+        )}
+        {accessToken && (
           <SpotifyPlayer
             autoPlay
+            callback={(state) => !state.isPlaying && setIsPlaying(false)}
             initialVolume={0.5}
             token={accessToken}
             play={isPlaying}
@@ -85,8 +87,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
               trackNameColor: '#fff',
             }}
           />
-        </div>
-      )}
+        )}
+      </div>
     </>
   )
 }

@@ -73,12 +73,12 @@ const CreatePlaylistFooter = ({
   return (
     <>
       <footer
-        className={`footer footer-center fixed bottom-[48px] left-0 right-0 translate-y-40 bg-[#121212] p-4 transition-all duration-500 lg:bottom-[48px] ${
-          isVisibleOnScroll && 'translate-y-0'
+        className={`footer footer-center translate-y-40  bg-[#121212] p-4 opacity-0 transition-all duration-500 lg:bottom-[48px] ${
+          isVisibleOnScroll && 'translate-y-0 opacity-100'
         }`}
       >
-        <div className="flex h-16 w-full justify-between px-4">
-          <div className="text-left text-gray-200">
+        <div className="flex w-full flex-col justify-between px-4 md:flex-row">
+          <div className="text-center text-gray-200 md:text-left">
             <h5 className="font-bold">{title}</h5>
             <h6>{description}</h6>
           </div>

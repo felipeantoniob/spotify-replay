@@ -3,9 +3,10 @@ import SpotifyProvider from 'next-auth/providers/spotify'
 
 // Prisma adapter for NextAuth, optional and can be removed
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
-import { prisma } from '../../../server/db/client'
 import { env } from '../../../env/server.mjs'
+import { prisma } from '../../../server/db/client'
 import { SessionWithTokens } from '../../../server/router/context'
+
 
 const scopes = [
   // "ugc-image-upload",
@@ -61,8 +62,8 @@ export const authOptions: NextAuthOptions = {
       return token
     },
     async session({ session, token }) {
-      session.accessToken = token.accessToken
-      session.refreshToken = token.refreshToken
+      session.accessToken = token.accessToken as string
+      session.refreshToken = token.refreshToken as string
       return session as SessionWithTokens
     },
   },
