@@ -1,9 +1,23 @@
+import { Menu, Transition } from '@headlessui/react'
 import Link from 'next/link'
-import { ReactNode } from 'react'
+import { useRouter } from 'next/router'
+import { Fragment, ReactNode } from 'react'
 import { BsMusicNoteBeamed, BsPersonFill, BsSpotify } from 'react-icons/bs'
 import { FiPieChart } from 'react-icons/fi'
 import { GiMicrophone } from 'react-icons/gi'
 import { MdHistory } from 'react-icons/md'
+
+const LINKS = [
+  { href: '/profile', label: 'Profile', icon: <BsPersonFill size="24px" className="mr-2" /> },
+  { href: '/artists', label: 'Top Artists', icon: <GiMicrophone size="24px" className="mr-2" /> },
+  {
+    href: '/tracks',
+    label: 'Top Tracks',
+    icon: <BsMusicNoteBeamed size="24px" className="mr-2" />,
+  },
+  { href: '/genres', label: 'Top Genres', icon: <FiPieChart size="24px" className="mr-2" /> },
+  { href: '/recent', label: 'Recent', icon: <MdHistory size="24px" className="mr-2" /> },
+] as const
 
 const NavButton = ({ children, href }: { children: ReactNode; href: string }) => (
   <Link href={href} passHref>
@@ -14,6 +28,8 @@ const NavButton = ({ children, href }: { children: ReactNode; href: string }) =>
 )
 
 const Navbar = () => {
+  const router = useRouter()
+
   return (
     <>
       <div className="sticky top-0 z-10 flex h-20 justify-center bg-black/80">
@@ -50,51 +66,56 @@ const Navbar = () => {
               </NavButton>
             </ul>
           </div>
-          <div className="navbar-end md:hidden">
-            <div className="dropdown-end dropdown">
-              <label tabIndex={0} className="btn border-0 bg-black hover:text-gray-200 md:hidden">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />
-                </svg>
-              </label>
-              <ul
-                tabIndex={0}
-                className="dropdown-content menu rounded-box menu-compact mt-3 w-40 bg-[#121212] p-2 shadow"
+          <Menu as="div" className="relative inline-block md:hidden">
+            <Menu.Button className="inline-flex justify-center rounded-md px-4  py-2  text-gray-400 hover:text-gray-200 ">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <NavButton href="/profile">
-                  <BsPersonFill size="24px" className="mr-2" />
-                  <p>Profile</p>
-                </NavButton>
-                <NavButton href="/artists">
-                  <GiMicrophone size="24px" className="mr-2" />
-                  Top Artists
-                </NavButton>
-                <NavButton href="/tracks">
-                  <BsMusicNoteBeamed size="24px" className="mr-2" />
-                  Top Tracks
-                </NavButton>
-                <NavButton href="/genres">
-                  <FiPieChart size="24px" className="mr-2" />
-                  Top Genres
-                </NavButton>
-                <NavButton href="/recent">
-                  <MdHistory size="24px" className="mr-2" />
-                  Recent
-                </NavButton>
-              </ul>
-            </div>
-          </div>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </Menu.Button>
+            <Transition
+              as={Fragment}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-lg bg-[#121212] py-2 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                {LINKS.map((link) => (
+                  <Menu.Item
+                    key={link.href}
+                    as="div"
+                    onClick={() => router.push({ pathname: link.href })}
+                  >
+                    {({ active }) => (
+                      <a
+                        className={`text-md block cursor-pointer px-4 py-3 transition-all ${
+                          active ? 'text-gray-200' : 'text-gray-400'
+                        }`}
+                      >
+                        <div className="flex">
+                          {link.icon}
+                          {link.label}
+                        </div>
+                      </a>
+                    )}
+                  </Menu.Item>
+                ))}
+              </Menu.Items>
+            </Transition>
+          </Menu>
         </nav>
       </div>
     </>
