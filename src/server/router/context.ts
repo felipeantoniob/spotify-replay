@@ -2,8 +2,8 @@
 import * as trpc from '@trpc/server'
 import * as trpcNext from '@trpc/server/adapters/next'
 import { Session } from 'next-auth'
-import { getServerAuthSession } from '../../server/common/get-server-auth-session'
-import { prisma } from '../db/client'
+import { getServerAuthSession } from '../auth'
+import { prisma } from '../db'
 
 export interface SessionWithTokens extends Session {
   accessToken: string
@@ -18,7 +18,7 @@ type CreateContextOptions = {
  * - testing, where we dont have to Mock Next.js' req/res
  * - trpc's `createSSGHelpers` where we don't have req/res
  **/
-export const createContextInner = async (opts: CreateContextOptions) => {
+const createContextInner = async (opts: CreateContextOptions) => {
   return {
     session: opts.session,
     prisma,
@@ -33,7 +33,7 @@ export const createContext = async (opts: trpcNext.CreateNextContextOptions) => 
   const { req, res } = opts
 
   // Get the session from the server using the unstable_getServerSession wrapper function
-  const session = await getServerAuthSession({ req, res })
+  const session = await getServerAuthSession({ req, res }) as SessionWithTokens | null
 
   return await createContextInner({
     session,
