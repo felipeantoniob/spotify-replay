@@ -6,7 +6,7 @@ const Home: NextPage = () => {
     <>
       <main className="grid min-h-screen place-content-center  ">
         <button
-          onClick={() => signIn('spotify', { callbackUrl: '/profile' })}
+          onClick={() => void signIn('spotify', { callbackUrl: '/profile' })}
           className="rounded-full bg-green-600 p-4 px-8 text-xl font-bold tracking-widest text-gray-200 shadow-sm  shadow-slate-700 transition-all hover:bg-green-700"
         >
           LOG IN TO SPOTIFY

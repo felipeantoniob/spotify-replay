@@ -1,11 +1,23 @@
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import { useBoundStore } from '../store/index'
-import { timeRangeDescription } from '../utils/timeRangeDescription'
-import { trpc } from '../utils/trpc'
 import useModal from '../hooks/useModal'
+import { useBoundStore } from '../store/index'
+import { api } from '../utils/api'
 import CreatedPlaylistModal from './CreatedPlaylistModal'
-import { TimeRangeType } from './TimeRangeRadio'
+import type { TimeRangeType } from './TimeRangeRadio'
+
+const getTimeRangeDescription = (timeRange: TimeRangeType) => {
+  switch (timeRange) {
+    case 'long_term':
+      return '(All Time)'
+    case 'medium_term':
+      return '(Last 6 Months)'
+    case 'short_term':
+      return '(Last Month)'
+    default:
+      return ''
+  }
+}
 
 const getFooterTitle = (pathname: string) => {
   switch (pathname) {
@@ -36,9 +48,9 @@ const getFooterDescription = (pathname: string) => {
 const getPlaylistName = (pathname: string, timeRange: TimeRangeType) => {
   switch (pathname) {
     case '/artists':
-      return `Top 20 Artists ${timeRangeDescription(timeRange)}`
+      return `Top 20 Artists ${getTimeRangeDescription(timeRange)}`
     case '/tracks':
-      return `Top Tracks ${timeRangeDescription(timeRange)}`
+      return `Top Tracks ${getTimeRangeDescription(timeRange)}`
     case '/recent':
       return 'Recently Played Tracks'
     default:
@@ -58,26 +70,30 @@ const CreatePlaylistFooter = ({ isVisibleOnScroll }: CreatePlaylistFooterProps) 
 
   const [playlistId, setPlaylistId] = useState('')
 
-  const playlistQuery = trpc.useQuery(['spotify.getPlaylist', { playlistId }], {
-    refetchOnWindowFocus: false,
-    enabled: playlistId.length > 0,
-  })
-  const createPlaylist = trpc.useMutation('spotify.createPlaylist')
-  const addTracksToPlaylist = trpc.useMutation('spotify.addTracksToPlaylist')
+  const playlistQuery = api.spotify.getPlaylist.useQuery(
+    { playlistId },
+    { refetchOnWindowFocus: false, enabled: playlistId.length > 0 }
+  )
+
+  const createPlaylist = api.spotify.createPlaylist.useMutation()
+
+  const addTracksToPlaylist = api.spotify.addTracksToPlaylist.useMutation()
 
   let playlist: SpotifyApi.SinglePlaylistResponse = {} as SpotifyApi.SinglePlaylistResponse
 
-  const handleCreatePlaylist = async (tracksUriArray: string[]) => {
+  const handleCreatePlaylist = (tracksUriArray: string[]) => {
+    if (tracksUriArray.length === 0) return
+
     createPlaylist.mutate(
       { playlistName: getPlaylistName(router.pathname, timeRange) },
       {
-        onSuccess: async (playlistId) => {
+        onSuccess: (playlistId) => {
           setPlaylistId(playlistId)
           addTracksToPlaylist.mutate(
             { playlistId, tracksUriArray },
             {
-              onSuccess: async () => {
-                playlistQuery.refetch()
+              onSuccess: () => {
+                void playlistQuery.refetch()
                 toggleModal()
               },
             }
@@ -95,7 +111,7 @@ const CreatePlaylistFooter = ({ isVisibleOnScroll }: CreatePlaylistFooterProps) 
     <>
       <footer
         className={`footer footer-center translate-y-40  bg-[#121212] p-4 opacity-0 transition-all duration-500 lg:bottom-[48px] ${
-          isVisibleOnScroll && 'translate-y-0 opacity-100'
+          isVisibleOnScroll ? 'translate-y-0 opacity-100' : ''
         }`}
       >
         <div className="flex w-full flex-col justify-between px-4 md:flex-row">

@@ -38,7 +38,7 @@ const CreatedPlaylistModal = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-lg  bg-[#121212] align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-lg  bg-[#121212] align-middle shadow-xl transition-all flex flex-col justify-center items-center">
                 <button
                   className="btn btn-circle btn-sm absolute right-2 top-2 z-10 cursor-pointer"
                   onClick={handleClose}

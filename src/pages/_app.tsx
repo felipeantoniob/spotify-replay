@@ -1,15 +1,14 @@
-// src/pages/_app.tsx
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { httpBatchLink } from '@trpc/client/links/httpBatchLink'
 import { loggerLink } from '@trpc/client/links/loggerLink'
 import { withTRPC } from '@trpc/next'
 import type { Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
 import type { AppType } from 'next/app'
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
 import superjson from 'superjson'
 import Layout from '../components/Layout'
-import type { AppRouter } from '../server/router'
+import type { AppRouter } from '../server/api/root'
 import '../styles/globals.css'
 const queryClient = new QueryClient()
 
