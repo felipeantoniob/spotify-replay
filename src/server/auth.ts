@@ -1,10 +1,19 @@
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import type { GetServerSidePropsContext } from 'next'
-import { getServerSession, type DefaultSession, type NextAuthOptions } from 'next-auth'
+import {
+  getServerSession,
+  type Session,
+  type DefaultSession,
+  type NextAuthOptions,
+} from 'next-auth'
 import SpotifyProvider from 'next-auth/providers/spotify'
 import { env } from '../env/server.mjs'
 import { prisma } from './db'
-import { SessionWithTokens } from './router/context.js'
+
+interface SessionWithTokens extends Session {
+  accessToken: string
+  refreshToken: string
+}
 
 const SCOPES = [
   // "ugc-image-upload",

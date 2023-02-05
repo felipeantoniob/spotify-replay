@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import Button from '../components/Button'
 import Spinner from '../components/Spinner'
 import Track from '../components/Track'
-import { trpc } from '../utils/trpc'
+import { api } from '../utils/api'
 
 const queryOptions = {
   keepPreviousData: true,
@@ -20,16 +20,16 @@ const Profile = () => {
   useSession({
     required: true,
     onUnauthenticated() {
-      router.push('/')
+      void router.push('/')
     },
   })
-  const userInfoQuery = trpc.useQuery(['spotify.getUserInfo'], queryOptions)
-  const userTopTracksQuery = trpc.useQuery(
-    ['spotify.getUserTopTracks', { timeRange: 'long_term', limit: 10 }],
+  const userInfoQuery = api.spotify.getUserInfo.useQuery(undefined, queryOptions)
+  const userTopTracksQuery = api.spotify.getUserTopTracks.useQuery(
+    { timeRange: 'long_term', limit: 10 },
     queryOptions
   )
-  const userTopArtistsQuery = trpc.useQuery(
-    ['spotify.getUserTopArtists', { timeRange: 'long_term', limit: 10 }],
+  const userTopArtistsQuery = api.spotify.getUserTopArtists.useQuery(
+    { timeRange: 'long_term', limit: 10 },
     queryOptions
   )
 
@@ -43,8 +43,8 @@ const Profile = () => {
     )
 
   if (userInfoQuery.isError || userTopTracksQuery.isError || userTopArtistsQuery.isError) {
-    signOut()
-    router.push('/')
+    void signOut()
+    void router.push('/')
   }
 
   if (userInfoQuery.data && userTopTracksQuery.data && userTopArtistsQuery.data) {
@@ -69,7 +69,7 @@ const Profile = () => {
           {userInfo.display_name}
         </h1>
         <div className="">
-          <Button text="Sign Out" onClick={() => signOut()} />
+          <Button text="Sign Out" onClick={() => void signOut()} />
         </div>
       </div>
       <div className="mx-8 flex flex-col pb-24 md:grid md:grid-cols-2">

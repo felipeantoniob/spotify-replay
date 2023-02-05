@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from 'react'
+import type { ChangeEventHandler } from 'react'
 
 export type TimeRangeType = 'long_term' | 'medium_term' | 'short_term'
 

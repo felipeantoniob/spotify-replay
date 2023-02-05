@@ -1,34 +1,28 @@
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import Header from '../components/Header'
-import { trpc } from '../utils/trpc'
-import Track from '../components/Track'
 import Spinner from '../components/Spinner'
-import { useEffect } from 'react'
+import Track from '../components/Track'
 import { useBoundStore } from '../store/index'
+import { api } from '../utils/api'
 
 const Recent = () => {
   const router = useRouter()
   useSession({
     required: true,
     onUnauthenticated() {
-      router.push('/')
+     void router.push('/')
     },
   })
-
-  const userRecentTracksQuery = trpc.useQuery(['spotify.getUserRecentTracks', { limit: 50 }])
   const setTracksUriArray = useBoundStore((state) => state.setTracksUriArray)
+
+  const userRecentTracksQuery = api.spotify.getUserRecentTracks.useQuery({ limit: 50 })
 
   let recentTracks: SpotifyApi.TrackObjectFull[] | null = null
 
-  useEffect(() => {
-    if (recentTracks) {
-      setTracksUriArray(recentTracks.map((track) => track.uri))
-    }
-  }, [recentTracks, setTracksUriArray])
-
   if (userRecentTracksQuery.isSuccess) {
     recentTracks = userRecentTracksQuery.data.items.map((item) => item.track)
+    setTracksUriArray(recentTracks.map((track) => track.uri))
   }
 
   return (
@@ -38,7 +32,7 @@ const Recent = () => {
         <div className="flex flex-col px-4 pb-40">
           {recentTracks.map((track, index) => (
             <Track
-              key={track.id + index}
+              key={`${track.id} ${index}`}
               track={track}
               index={index}
               showIndex

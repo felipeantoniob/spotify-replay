@@ -1,7 +1,7 @@
 import { Menu, Transition } from '@headlessui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Fragment, ReactNode } from 'react'
+import { Fragment, type ReactNode } from 'react'
 import { BsMusicNoteBeamed, BsPersonFill, BsSpotify } from 'react-icons/bs'
 import { FiPieChart } from 'react-icons/fi'
 import { GiMicrophone } from 'react-icons/gi'
@@ -97,7 +97,7 @@ const Navbar = () => {
                   <Menu.Item
                     key={link.href}
                     as="div"
-                    onClick={() => router.push({ pathname: link.href })}
+                    onClick={() => void router.push({ pathname: link.href })}
                   >
                     {({ active }) => (
                       <a

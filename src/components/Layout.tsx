@@ -1,7 +1,7 @@
 import { useSession } from 'next-auth/react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import SpotifyPlayer from 'react-spotify-web-playback'
 import useVisibleOnScroll from '../hooks/useVisibleOnScroll'
 import { useBoundStore } from '../store/index'

@@ -38,7 +38,6 @@ const Track = ({ track, index, showIndex, showDuration, showAlbum }: TrackProps)
           alt="album picture"
           height={50}
           width={50}
-          layout="intrinsic"
         />
       </div>
       <div className="flex h-full flex-1 flex-col justify-center truncate pr-4">

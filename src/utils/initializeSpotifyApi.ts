@@ -1,9 +1,6 @@
 import SpotifyWebApi from 'spotify-web-api-node'
 
-const setCredentials = async (
-  accessToken: string,
-  refreshToken: string
-): Promise<SpotifyWebApi> => {
+const setCredentials = (accessToken: string, refreshToken: string): SpotifyWebApi => {
   const spotifyApi = new SpotifyWebApi()
   spotifyApi.setCredentials({
     accessToken,
@@ -12,7 +9,7 @@ const setCredentials = async (
   return spotifyApi
 }
 
-export const initializeSpotifyApi = async (accessToken: string, refreshToken: string) => {
-  const spotifyApi = await setCredentials(accessToken, refreshToken)
+export const initializeSpotifyApi = (accessToken: string, refreshToken: string) => {
+  const spotifyApi = setCredentials(accessToken, refreshToken)
   return spotifyApi
 }

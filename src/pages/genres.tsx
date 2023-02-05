@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import Spinner from '../components/Spinner'
 import TimeRangeRadio from '../components/TimeRangeRadio'
 import { useBoundStore } from '../store/index'
+import { api } from '../utils/api'
 import type { GenreObject } from '../utils/getGenreChartData'
 import {
   getAllArtistsGenres,
@@ -12,7 +13,6 @@ import {
   getGenreFrequency,
   getTopGenres,
 } from '../utils/index'
-import { trpc } from '../utils/trpc'
 
 let topArtists: SpotifyApi.ArtistObjectFull[] | null = null
 let genreChartData: GenreObject[] = []
@@ -22,17 +22,14 @@ const Genres = () => {
   useSession({
     required: true,
     onUnauthenticated() {
-      router.push('/')
+      void router.push('/')
     },
   })
   const timeRange = useBoundStore((state) => state.timeRange)
   const setTimeRange = useBoundStore((state) => state.setTimeRange)
-  const userTopArtistsQuery = trpc.useQuery(
-    ['spotify.getUserTopArtists', { timeRange, limit: 50 }],
-    {
-      keepPreviousData: true,
-      refetchOnWindowFocus: false,
-    }
+  const userTopArtistsQuery = api.spotify.getUserTopArtists.useQuery(
+    { timeRange, limit: 50 },
+    { keepPreviousData: true, refetchOnWindowFocus: false }
   )
 
   if (userTopArtistsQuery.isSuccess) {

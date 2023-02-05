@@ -1,40 +1,35 @@
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 import Header from '../components/Header'
 import Spinner from '../components/Spinner'
 import TimeRangeRadio from '../components/TimeRangeRadio'
 import Track from '../components/Track'
 import { useBoundStore } from '../store/index'
-import { trpc } from '../utils/trpc'
+import { api } from '../utils/api'
 
 const Tracks = () => {
   const router = useRouter()
   useSession({
     required: true,
     onUnauthenticated() {
-      router.push('/')
+      void router.push('/')
     },
   })
   const timeRange = useBoundStore((state) => state.timeRange)
   const setTimeRange = useBoundStore((state) => state.setTimeRange)
   const setTracksUriArray = useBoundStore((state) => state.setTracksUriArray)
-  const userTopTracksQuery = trpc.useQuery(['spotify.getUserTopTracks', { timeRange, limit: 50 }], {
-    keepPreviousData: true,
-    refetchOnWindowFocus: false,
-  })
+
+  const userTopTracksQuery = api.spotify.getUserTopTracks.useQuery(
+    { timeRange, limit: 50 },
+    { keepPreviousData: true, refetchOnWindowFocus: false }
+  )
 
   let topTracks: SpotifyApi.TrackObjectFull[] | null = null
 
   if (userTopTracksQuery.isSuccess) {
     topTracks = userTopTracksQuery.data.items
+    setTracksUriArray(topTracks.map((track) => track.uri))
   }
-
-  useEffect(() => {
-    if (topTracks) {
-      setTracksUriArray(topTracks.map((track) => track.uri))
-    }
-  }, [topTracks, setTracksUriArray])
 
   return (
     <>
