@@ -28,7 +28,7 @@ type TimeRangeRadioProps = {
 
 const TimeRangeRadio = ({ timeRange, setTimeRange }: TimeRangeRadioProps): JSX.Element => {
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setTimeRange(e.currentTarget.value as 'long_term' | 'medium_term' | 'short_term')
+    setTimeRange(e.currentTarget.value as TimeRangeType)
   }
 
   return (

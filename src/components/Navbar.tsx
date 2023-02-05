@@ -34,7 +34,7 @@ const Navbar = () => {
     <>
       <div className="sticky top-0 z-10 flex h-20 justify-center bg-black/80">
         <nav className="navbar max-w-7xl justify-between">
-          <div className="navbar-start">
+          <div className="w-1/2 justify-start">
             <NavButton href="/profile">
               <BsSpotify
                 size="48px"

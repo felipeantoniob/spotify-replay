@@ -5,11 +5,7 @@ const useVisibleOnScroll = (yOffset: number) => {
 
   useEffect(() => {
     const onScroll = () => {
-      if (window.pageYOffset > yOffset) {
-        setIsVisibleOnScroll(true)
-      } else {
-        setIsVisibleOnScroll(false)
-      }
+      setIsVisibleOnScroll(window.scrollY > yOffset)
     }
 
     window.addEventListener('scroll', onScroll)

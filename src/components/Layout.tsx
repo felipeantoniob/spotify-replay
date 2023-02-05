@@ -8,45 +8,15 @@ import { useBoundStore } from '../store/index'
 import CreatePlaylistFooter from './CreatePlaylistFooter'
 import Navbar from './Navbar'
 
-let accessToken: string | null = null
-
 const Layout = ({ children }: { children: ReactNode }) => {
+  const router = useRouter()
   const { data: session } = useSession()
   const uri = useBoundStore((state) => state.uri)
   const isPlaying = useBoundStore((state) => state.isPlaying)
   const setIsPlaying = useBoundStore((state) => state.setIsPlaying)
   const { isVisibleOnScroll } = useVisibleOnScroll(300)
-  const router = useRouter()
 
-  if (session) {
-    accessToken = session.accessToken as string
-  }
-
-  const getFooterTitle = (pathname: string) => {
-    switch (pathname) {
-      case '/artists':
-        return 'Create Top Tracks playlist'
-      case '/tracks':
-        return 'Create Top Artists playlist'
-      case '/recent':
-        return 'Create Recently Played playlist'
-      default:
-        return ''
-    }
-  }
-
-  const getFooterDescription = (pathname: string) => {
-    switch (pathname) {
-      case '/artists':
-        return 'This creates a playlist from your Top 20 artists with Top 5 tracks from each artist in random order.'
-      case '/tracks':
-        return 'This creates a playlist of your top 50 tracks.'
-      case '/recent':
-        return 'This creates a playlist of your 50 most recently played tracks.'
-      default:
-        return ''
-    }
-  }
+  const accessToken = session?.accessToken ?? null
 
   return (
     <>
@@ -63,11 +33,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       </main>
       <div className="fixed bottom-0 left-0 right-0">
         {['/artists', '/tracks', '/recent'].includes(router.pathname) && (
-          <CreatePlaylistFooter
-            isVisibleOnScroll={isVisibleOnScroll}
-            title={getFooterTitle(router.pathname)}
-            description={getFooterDescription(router.pathname)}
-          />
+          <CreatePlaylistFooter isVisibleOnScroll={isVisibleOnScroll} />
         )}
         {accessToken && (
           <SpotifyPlayer

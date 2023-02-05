@@ -1,19 +1,20 @@
 import Image from 'next/image'
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
+
 type CreatedPlaylistModalProps = {
-  show: boolean
+  isVisible: boolean
   handleClose: () => void
   playlistDetails: SpotifyApi.SinglePlaylistResponse
 }
 
 const CreatedPlaylistModal = ({
-  show,
+  isVisible,
   handleClose,
   playlistDetails,
 }: CreatedPlaylistModalProps) => {
   return (
-    <Transition appear show={show} as={Fragment}>
+    <Transition appear show={isVisible} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={handleClose}>
         <Transition.Child
           as={Fragment}

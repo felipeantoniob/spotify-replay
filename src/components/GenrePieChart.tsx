@@ -1,9 +1,9 @@
-import { ArcElement, Chart as ChartJS, Legend, Tooltip,  } from 'chart.js'
-import { Pie,  } from 'react-chartjs-2'
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js'
+import { Pie } from 'react-chartjs-2'
 import { getArtistsOfGenre } from '../utils/index'
 import type { GenreObject } from '../utils/getGenreChartData'
 
-const backgroundColorArray = [
+const BACKGROUND_COLOR_ARRAY = [
   '#3cb44b99',
   '#e6194b99',
   '#ffe11999',
@@ -24,8 +24,9 @@ const backgroundColorArray = [
   '#ffd8b199',
   '#00007599',
   '#80808099',
-]
-const borderColorArray = [
+] as const
+
+const BORDER_COLOR_ARRAY = [
   '#3cb44b11',
   '#e6194b11',
   '#ffe11911',
@@ -46,7 +47,7 @@ const borderColorArray = [
   '#ffd8b111',
   '#00007511',
   '#80808011',
-]
+] as const
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
@@ -57,50 +58,47 @@ type GenrePieChartProps = {
 
 const GenrePieChart = ({ genreChartData, topArtists }: GenrePieChartProps) => {
   const data = {
-    labels: genreChartData.map((genre) => genre.genre),
+    labels: genreChartData.map((genreObject) => genreObject.genre),
     datasets: [
       {
         label: 'Top Genres',
-        data: genreChartData.map((genre) => genre.artists.length),
-        backgroundColor: backgroundColorArray,
-        borderColor: borderColorArray,
+        data: genreChartData.map((genreObject) => genreObject.artists.length),
+        backgroundColor: BACKGROUND_COLOR_ARRAY,
+        borderColor: BORDER_COLOR_ARRAY,
         borderWidth: 1,
       },
     ],
   }
 
   return (
-    <div>
-      {' '}
-      <Pie
-        data={data}
-        options={{
-          plugins: {
-            legend: {
-              display: true,
-              position: 'bottom',
-              labels: {
-                boxWidth: 20,
-                color: 'rgba(255, 255, 255, 0.6)',
-                font: {
-                  size: 16,
-                },
+    <Pie
+      data={data}
+      options={{
+        plugins: {
+          legend: {
+            display: true,
+            position: 'bottom',
+            labels: {
+              boxWidth: 20,
+              color: 'rgba(255, 255, 255, 0.6)',
+              font: {
+                size: 16,
               },
-            },
-            tooltip: {
-              callbacks: {
-                label: (context) => {
-                  return `${context.label}: ${getArtistsOfGenre(topArtists, context.label).join(
-                    ', '
-                  )}`
-                },
-              },
-              bodyFont: { size: 12 },
             },
           },
-        }}
-      />
-    </div>
+          tooltip: {
+            callbacks: {
+              label: (context) => {
+                return `${context.label}: ${getArtistsOfGenre(topArtists, context.label).join(
+                  ', '
+                )}`
+              },
+            },
+            bodyFont: { size: 12 },
+          },
+        },
+      }}
+    />
   )
 }
 

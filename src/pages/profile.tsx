@@ -56,11 +56,11 @@ const Profile = () => {
   return (
     <>
       <div className="mb-8 flex flex-col text-center">
-        <div>
+        <div className="flex justify-center">
           <Image
             className="rounded-full"
             src={userInfo.images && userInfo.images[0] ? userInfo.images[0].url : ''}
-            alt={userInfo.display_name}
+            alt={userInfo.display_name ?? 'username'}
             height={150}
             width={150}
           />
