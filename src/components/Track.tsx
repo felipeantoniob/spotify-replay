@@ -17,7 +17,7 @@ const Track = ({ track, index, showIndex, showDuration, showAlbum }: TrackProps)
   const setIsPlaying = useBoundStore((state) => state.setIsPlaying)
 
   return (
-    <div className="group flex h-16 flex-row items-center rounded-md px-2 transition-all duration-75 hover:bg-gray-500/25 ">
+    <div className="group flex py-2 flex-row rounded-md px-2 transition-all duration-75 hover:bg-gray-500/25 ">
       {showIndex && (
         <div
           onClick={() => {
@@ -26,44 +26,43 @@ const Track = ({ track, index, showIndex, showDuration, showAlbum }: TrackProps)
           }}
           className="cursor-pointer"
         >
-          <h6 className="flex w-12 items-center justify-center text-gray-400">
+          <h6 className="flex w-12 items-center justify-center text-white text-sm h-full">
             <div className="group-hover:hidden">{index + 1}</div>
             <BsPlayFill size="20px" className="hidden group-hover:block" />
           </h6>
         </div>
       )}
-      <div className="mr-6 flex shrink-0">
+      <div className="mr-4 flex shrink-0">
         <Image
           src={track.album.images[0] ? track.album.images[0].url : ''}
           alt="album picture"
-          height={50}
-          width={50}
+          height={80}
+          width={80}
         />
       </div>
-      <div className="flex h-full flex-1 flex-col justify-center truncate pr-4">
-        <h4 className="truncate text-left text-gray-200">{track.name}</h4>
-        <div className="flex items-center truncate text-left text-gray-400">
-          {track.explicit && (
-            <MdExplicit size="20px" className="mr-1 h-full shrink-0 text-gray-400" />
-          )}
-          <h2 className="truncate">
+      <div className="flex flex-1 flex-col justify-evenly truncate pr-4 ">
+        <h2 className="truncate text-left text-white font-bold text-sm">{track.name}</h2>
+        <div className="flex items-center truncate text-left text-white">
+          {track.explicit && <MdExplicit size="16px" className="mr-1 h-full shrink-0 text-white" />}
+          <h4 className="truncate text-sm">
             {track.artists
               .map((artist: SpotifyApi.ArtistObjectSimplified) => {
                 return artist.name
               })
               .join(', ')}
-          </h2>
+          </h4>
         </div>
+        {showAlbum && <h6 className="text-sm text-white">{track.album.name}</h6>}
       </div>
       {showAlbum && (
-        <div className="hidden h-full flex-1 flex-col justify-center truncate text-gray-400 md:flex">
+        <div className="hidden h-full flex-1 flex-col justify-center truncate text-sm text-white md:flex">
           {track.album.name}
         </div>
       )}
       {showDuration && (
-        <span className="ml-auto mr-4 block pl-4 text-sm text-gray-400">
+        <div className="px-4 text-sm text-white pt-2">
           {msToMinutesAndSeconds(track.duration_ms)}
-        </span>
+        </div>
       )}
     </div>
   )

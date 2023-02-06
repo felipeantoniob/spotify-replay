@@ -80,9 +80,10 @@ const GenrePieChart = ({ genreChartData, topArtists }: GenrePieChartProps) => {
             position: 'bottom',
             labels: {
               boxWidth: 20,
-              color: 'rgba(255, 255, 255, 0.6)',
+              color: 'rgba(255, 255, 255, 1)',
               font: {
-                size: 16,
+                size: 12,
+                weight: '700',
               },
             },
           },

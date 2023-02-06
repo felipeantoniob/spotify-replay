@@ -20,7 +20,7 @@ const Tracks = () => {
   const setTracksUriArray = useBoundStore((state) => state.setTracksUriArray)
 
   const userTopTracksQuery = api.spotify.getUserTopTracks.useQuery(
-    { timeRange, limit: 50 },
+    { timeRange, limit: 10 },
     { keepPreviousData: true, refetchOnWindowFocus: false }
   )
 
@@ -33,11 +33,11 @@ const Tracks = () => {
 
   return (
     <>
-      <Header title="Top Tracks">
+      <Header title="Your Top 10 Songs">
         <TimeRangeRadio timeRange={timeRange} setTimeRange={setTimeRange} />
       </Header>
       {topTracks ? (
-        <div className="flex flex-col px-4 pb-40">
+        <div className="flex flex-col pb-40">
           {topTracks.map((track, index) => (
             <Track key={track.id} track={track} index={index} showIndex showAlbum showDuration />
           ))}

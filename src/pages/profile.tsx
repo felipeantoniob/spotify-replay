@@ -51,11 +51,11 @@ const AppLogo = () => (
         y2="16.6917"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#2E3192" />
-        <stop offset="0.15" stop-color="#3C2C9B" />
-        <stop offset="0.43" stop-color="#621FB4" />
-        <stop offset="0.81" stop-color="#9F0BDB" />
-        <stop offset="1" stop-color="#C000F0" />
+        <stop stopColor="#2E3192" />
+        <stop offset="0.15" stopColor="#3C2C9B" />
+        <stop offset="0.43" stopColor="#621FB4" />
+        <stop offset="0.81" stopColor="#9F0BDB" />
+        <stop offset="1" stopColor="#C000F0" />
       </linearGradient>
       <linearGradient
         id="paint1_linear_10_1910"
@@ -65,11 +65,11 @@ const AppLogo = () => (
         y2="9.02928"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#2E3192" />
-        <stop offset="0.15" stop-color="#3C2C9B" />
-        <stop offset="0.43" stop-color="#621FB4" />
-        <stop offset="0.81" stop-color="#9F0BDB" />
-        <stop offset="1" stop-color="#C000F0" />
+        <stop stopColor="#2E3192" />
+        <stop offset="0.15" stopColor="#3C2C9B" />
+        <stop offset="0.43" stopColor="#621FB4" />
+        <stop offset="0.81" stopColor="#9F0BDB" />
+        <stop offset="1" stopColor="#C000F0" />
       </linearGradient>
       <clipPath id="clip0_10_1910">
         <rect
@@ -101,11 +101,11 @@ const Profile = () => {
   const userInfoQuery = api.spotify.getUserInfo.useQuery(undefined, queryOptions)
 
   if (userInfoQuery.isLoading)
-  return (
-    <div className="h-screen grid place-items-center">
-      <Spinner />
-    </div>
-  )
+    return (
+      <div className="h-screen grid place-items-center">
+        <Spinner />
+      </div>
+    )
 
   if (userInfoQuery.isError) {
     void signOut()

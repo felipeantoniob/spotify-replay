@@ -33,7 +33,7 @@ const Artists = () => {
   )
 
   const userTopArtistsQuery = api.spotify.getUserTopArtists.useQuery(
-    { timeRange, limit: 50 },
+    { timeRange, limit: 10 },
     { keepPreviousData: true, refetchOnWindowFocus: false }
   )
 
@@ -52,7 +52,7 @@ const Artists = () => {
 
   return (
     <>
-      <Header title="Top Artists">
+      <Header title="Your Top 10 Artists">
         <TimeRangeRadio timeRange={timeRange} setTimeRange={setTimeRange} />
       </Header>
       {topArtists.length > 0 ? (

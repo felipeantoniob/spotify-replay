@@ -42,7 +42,7 @@ const Genres = () => {
   }
   return (
     <>
-      <Header title="Top Genres">
+      <Header title="Your Top Genres">
         <TimeRangeRadio timeRange={timeRange} setTimeRange={setTimeRange} />
       </Header>
       {genreChartData ? (

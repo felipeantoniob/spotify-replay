@@ -3,7 +3,7 @@ import { signIn } from 'next-auth/react'
 
 const AppLogo = () => (
   <svg width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g clip-path="url(#clip0_1_3370)">
+    <g clipPath="url(#clip0_1_3370)">
       <path
         d="M38.7002 0H9.08394C4.06702 0 0 4.07507 0 9.10193V38.7769C0 43.8037 4.06702 47.8788 9.08394 47.8788H38.7002C43.7171 47.8788 47.7841 43.8037 47.7841 38.7769V9.10193C47.7841 4.07507 43.7171 0 38.7002 0Z"
         fill="white"
@@ -47,11 +47,11 @@ const AppLogo = () => (
         y2="30.3995"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#2E3192" />
-        <stop offset="0.15" stop-color="#3C2C9B" />
-        <stop offset="0.43" stop-color="#621FB4" />
-        <stop offset="0.81" stop-color="#9F0BDB" />
-        <stop offset="1" stop-color="#C000F0" />
+        <stop stopColor="#2E3192" />
+        <stop offset="0.15" stopColor="#3C2C9B" />
+        <stop offset="0.43" stopColor="#621FB4" />
+        <stop offset="0.81" stopColor="#9F0BDB" />
+        <stop offset="1" stopColor="#C000F0" />
       </linearGradient>
       <linearGradient
         id="paint1_linear_1_3370"
@@ -61,11 +61,11 @@ const AppLogo = () => (
         y2="16.0108"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#2E3192" />
-        <stop offset="0.15" stop-color="#3C2C9B" />
-        <stop offset="0.43" stop-color="#621FB4" />
-        <stop offset="0.81" stop-color="#9F0BDB" />
-        <stop offset="1" stop-color="#C000F0" />
+        <stop stopColor="#2E3192" />
+        <stop offset="0.15" stopColor="#3C2C9B" />
+        <stop offset="0.43" stopColor="#621FB4" />
+        <stop offset="0.81" stopColor="#9F0BDB" />
+        <stop offset="1" stopColor="#C000F0" />
       </linearGradient>
       <clipPath id="clip0_1_3370">
         <rect width="200" height="47.8788" fill="white" />
