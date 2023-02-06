@@ -19,7 +19,7 @@ const Artist = ({ ...artist }: SpotifyApi.ArtistObjectFull) => {
         />
         <h3 className="pt-4 text-gray-200">{artist.name}</h3>
       </div>
-      <ArtistModal show={isModalShowing} handleClose={toggleModal} artist={artist} />
+      <ArtistModal isVisible={isModalShowing} handleClose={toggleModal} artist={artist} />
     </>
   )
 }

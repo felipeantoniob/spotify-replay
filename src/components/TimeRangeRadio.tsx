@@ -1,4 +1,5 @@
 import type { ChangeEventHandler } from 'react'
+import { useBoundStore } from '../store'
 
 export type TimeRangeType = 'long_term' | 'medium_term' | 'short_term'
 
@@ -21,12 +22,10 @@ const RadioButton = ({ timeRange, handleChange, value, label }: RadioButtonProps
   />
 )
 
-type TimeRangeRadioProps = {
-  timeRange: TimeRangeType
-  setTimeRange: (timeRange: TimeRangeType) => void
-}
+const TimeRangeRadio = (): JSX.Element => {
+  const timeRange = useBoundStore((state) => state.timeRange)
+  const setTimeRange = useBoundStore((state) => state.setTimeRange)
 
-const TimeRangeRadio = ({ timeRange, setTimeRange }: TimeRangeRadioProps): JSX.Element => {
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setTimeRange(e.currentTarget.value as TimeRangeType)
   }

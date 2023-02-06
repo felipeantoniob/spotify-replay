@@ -26,7 +26,7 @@ const Genres = () => {
     },
   })
   const timeRange = useBoundStore((state) => state.timeRange)
-  const setTimeRange = useBoundStore((state) => state.setTimeRange)
+
   const userTopArtistsQuery = api.spotify.getUserTopArtists.useQuery(
     { timeRange, limit: 50 },
     { keepPreviousData: true, refetchOnWindowFocus: false }
@@ -40,25 +40,26 @@ const Genres = () => {
     const genresArtistsObject = getGenreChartData(topGenresArray, topArtists)
     genreChartData = genresArtistsObject
   }
+
   return (
     <>
       <Header title="Your Top Genres">
-        <TimeRangeRadio timeRange={timeRange} setTimeRange={setTimeRange} />
+        <TimeRangeRadio />
       </Header>
-      {genreChartData ? (
-        <div className="flex h-screen justify-center pb-16">
-          <div className="w-full md:w-3/4 lg:w-1/2">
-            {genreChartData && topArtists && (
-              <GenrePieChart genreChartData={genreChartData} topArtists={topArtists} />
-            )}
-          </div>
-        </div>
+      {userTopArtistsQuery.isLoading ? (
+        <Spinner />
       ) : (
-        <div className="h-screen">
-          <div className="h-1/2">
-            <Spinner />
-          </div>
-        </div>
+        <>
+          {genreChartData.length > 0 && (
+            <div className="flex h-screen justify-center pb-16">
+              <div className="w-full md:w-3/4 lg:w-1/2">
+                {genreChartData && topArtists && (
+                  <GenrePieChart genreChartData={genreChartData} topArtists={topArtists} />
+                )}
+              </div>
+            </div>
+          )}
+        </>
       )}
     </>
   )

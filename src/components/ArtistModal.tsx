@@ -2,14 +2,14 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
 type ArtistModalProps = {
-  show: boolean
+  isVisible: boolean
   handleClose: () => void
   artist: SpotifyApi.ArtistObjectFull
 }
 
-const ArtistModal = ({ show, handleClose, artist }: ArtistModalProps) => {
+const ArtistModal = ({ isVisible, handleClose, artist }: ArtistModalProps) => {
   return (
-    <Transition appear show={show} as={Fragment}>
+    <Transition appear show={isVisible} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={handleClose}>
         <Transition.Child
           as={Fragment}

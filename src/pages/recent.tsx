@@ -6,19 +6,19 @@ import Track from '../components/Track'
 import { useBoundStore } from '../store/index'
 import { api } from '../utils/api'
 
+let recentTracks: SpotifyApi.TrackObjectFull[] = []
+
 const Recent = () => {
   const router = useRouter()
   useSession({
     required: true,
     onUnauthenticated() {
-     void router.push('/')
+      void router.push('/')
     },
   })
   const setTracksUriArray = useBoundStore((state) => state.setTracksUriArray)
 
-  const userRecentTracksQuery = api.spotify.getUserRecentTracks.useQuery({ limit: 50 })
-
-  let recentTracks: SpotifyApi.TrackObjectFull[] | null = null
+  const userRecentTracksQuery = api.spotify.getUserRecentTracks.useQuery({ limit: 10 })
 
   if (userRecentTracksQuery.isSuccess) {
     recentTracks = userRecentTracksQuery.data.items.map((item) => item.track)
@@ -28,25 +28,25 @@ const Recent = () => {
   return (
     <>
       <Header title="Recent Tracks" />
-      {recentTracks ? (
-        <div className="flex flex-col px-4 pb-40">
-          {recentTracks.map((track, index) => (
-            <Track
-              key={`${track.id} ${index}`}
-              track={track}
-              index={index}
-              showIndex
-              showAlbum
-              showDuration
-            />
-          ))}
-        </div>
+      {userRecentTracksQuery.isLoading ? (
+        <Spinner />
       ) : (
-        <div className="h-screen">
-          <div className="h-1/2">
-            <Spinner />
-          </div>
-        </div>
+        <>
+          {recentTracks.length > 0 && (
+            <div className="flex flex-col px-4 pb-40">
+              {recentTracks.map((track, index) => (
+                <Track
+                  key={`${track.id} ${index}`}
+                  track={track}
+                  index={index}
+                  showIndex
+                  showAlbum
+                  showDuration
+                />
+              ))}
+            </div>
+          )}
+        </>
       )}
     </>
   )

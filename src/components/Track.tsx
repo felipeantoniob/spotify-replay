@@ -32,7 +32,7 @@ const Track = ({ track, index, showIndex, showDuration, showAlbum }: TrackProps)
           </h6>
         </div>
       )}
-      <div className="mr-4 flex shrink-0">
+      <div className="flex shrink-0">
         <Image
           src={track.album.images[0] ? track.album.images[0].url : ''}
           alt="album picture"
@@ -40,8 +40,15 @@ const Track = ({ track, index, showIndex, showDuration, showAlbum }: TrackProps)
           width={80}
         />
       </div>
-      <div className="flex flex-1 flex-col justify-evenly truncate pr-4 ">
-        <h2 className="truncate text-left text-white font-bold text-sm">{track.name}</h2>
+      <div className="flex flex-1 flex-col justify-evenly truncate px-4 ">
+        <div className="flex flex-row items-center">
+          <h2 className="truncate text-left text-white font-bold text-sm">{track.name}</h2>
+          {showDuration && (
+            <p className="text-base font-light ml-auto">
+              {msToMinutesAndSeconds(track.duration_ms)}
+            </p>
+          )}
+        </div>
         <div className="flex items-center truncate text-left text-white">
           {track.explicit && <MdExplicit size="16px" className="mr-1 h-full shrink-0 text-white" />}
           <h4 className="truncate text-sm">
@@ -52,18 +59,18 @@ const Track = ({ track, index, showIndex, showDuration, showAlbum }: TrackProps)
               .join(', ')}
           </h4>
         </div>
-        {showAlbum && <h6 className="text-sm text-white">{track.album.name}</h6>}
+        {showAlbum && <h6 className="text-sm text-white truncate">{track.album.name}</h6>}
       </div>
-      {showAlbum && (
+      {/* {showAlbum && (
         <div className="hidden h-full flex-1 flex-col justify-center truncate text-sm text-white md:flex">
           {track.album.name}
         </div>
-      )}
-      {showDuration && (
+      )} */}
+      {/* {showDuration && (
         <div className="px-4 text-sm text-white pt-2">
           {msToMinutesAndSeconds(track.duration_ms)}
         </div>
-      )}
+      )} */}
     </div>
   )
 }
