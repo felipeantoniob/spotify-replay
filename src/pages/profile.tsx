@@ -58,7 +58,7 @@ const Profile = () => {
       <div className="mb-8 flex flex-col text-center">
         <div className="flex justify-center">
           <Image
-            className="rounded-full"
+            className="rounded-full aspect-square"
             src={userInfo.images && userInfo.images[0] ? userInfo.images[0].url : ''}
             alt={userInfo.display_name ?? 'username'}
             height={150}
@@ -85,7 +85,7 @@ const Profile = () => {
                 alt={artist.name}
                 height={50}
                 width={50}
-                className="rounded-full object-cover"
+                className="rounded-full object-cover aspect-square"
               />
               <p className="ml-3">{artist.name}</p>
             </div>

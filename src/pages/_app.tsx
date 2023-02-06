@@ -11,6 +11,9 @@ import Layout from '../components/Layout'
 import type { AppRouter } from '../server/api/root'
 import '../styles/globals.css'
 const queryClient = new QueryClient()
+import { Inter } from '@next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -19,6 +22,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
   return (
     <QueryClientProvider client={queryClient}>
       <SessionProvider session={session}>
+        <style jsx global>{`
+          html {
+            font-family: ${inter.style.fontFamily};
+          }
+        `}</style>
         <Layout>
           <Component {...pageProps} />
         </Layout>

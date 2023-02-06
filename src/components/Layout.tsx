@@ -28,14 +28,14 @@ const Layout = ({ children }: { children: ReactNode }) => {
       {['/profile', '/artists', '/tracks', '/genres', '/recent'].includes(router.pathname) && (
         <Navbar />
       )}
-      <main className="pt-8">
+      <main className="pt-8 bg-purple-gradient bg-cover">
         <div className="container mx-auto max-w-7xl">{children}</div>
       </main>
       <div className="fixed bottom-0 left-0 right-0">
         {['/artists', '/tracks', '/recent'].includes(router.pathname) && (
           <CreatePlaylistFooter isVisibleOnScroll={isVisibleOnScroll} />
         )}
-        {accessToken && (
+        {router.pathname !== '/' && accessToken && (
           <SpotifyPlayer
             autoPlay
             callback={(state) => !state.isPlaying && setIsPlaying(false)}

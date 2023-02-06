@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'purple-gradient': "url(/img/gradient.png)"
+      }
+    },
   },
   important: true,
   plugins: [require('daisyui')],
