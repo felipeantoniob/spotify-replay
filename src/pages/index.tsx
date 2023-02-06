@@ -95,7 +95,7 @@ const AppleIcon = () => (
 const Home: NextPage = () => {
   return (
     <>
-      <main className="min-h-screen grid place-content-center">
+      <div className="min-h-screen grid place-content-center">
         <div className="justify-center items-center flex flex-col">
           <AppLogo />
           <button
@@ -121,7 +121,7 @@ const Home: NextPage = () => {
             <span className="font-bold">Rediscover</span> yourself
           </p>
         </div>
-      </main>
+      </div>
     </>
   )
 }
