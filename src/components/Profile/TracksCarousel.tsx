@@ -5,9 +5,9 @@ import 'slick-carousel/slick/slick.css'
 
 export const settings: Settings = {
   infinite: true,
-  slidesToScroll: 1,
   slidesToShow: 5,
   arrows: false,
+  swipeToSlide: true,
   responsive: [
     {
       breakpoint: 576,
