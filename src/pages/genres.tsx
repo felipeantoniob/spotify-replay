@@ -1,9 +1,9 @@
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import GenrePieChart from '../components/GenrePieChart'
-import Header from '../components/Header'
-import Spinner from '../components/Spinner'
-import TimeRangeRadio from '../components/TimeRangeRadio'
+
+import GenrePieChart from '../components/Genres/GenrePieChart'
+import Header from '../components/UI/Header'
+import Spinner from '../components/UI/Spinner'
 import { useBoundStore } from '../store/index'
 import { api } from '../utils/api'
 import type { GenreObject } from '../utils/getGenreChartData'
@@ -14,8 +14,7 @@ import {
   getTopGenres,
 } from '../utils/index'
 
-let topArtists: SpotifyApi.ArtistObjectFull[] | null = null
-let genreChartData: GenreObject[] = []
+const NUMBER_OF_ARTISTS = 50
 
 const Genres = () => {
   const router = useRouter()
@@ -26,9 +25,11 @@ const Genres = () => {
     },
   })
   const timeRange = useBoundStore((state) => state.timeRange)
+  let topArtists: SpotifyApi.ArtistObjectFull[] | null = null
+  let genreChartData: GenreObject[] = []
 
   const userTopArtistsQuery = api.spotify.getUserTopArtists.useQuery(
-    { timeRange, limit: 50 },
+    { timeRange, limit: NUMBER_OF_ARTISTS },
     { keepPreviousData: true, refetchOnWindowFocus: false }
   )
 
@@ -43,9 +44,7 @@ const Genres = () => {
 
   return (
     <>
-      <Header title="Your Top Genres">
-        <TimeRangeRadio />
-      </Header>
+      <Header title="Your Top Genres" />
       {userTopArtistsQuery.isLoading ? (
         <Spinner />
       ) : (

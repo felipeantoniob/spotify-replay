@@ -1,15 +1,12 @@
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import Artist from '../components/Artist'
-import ArtistRow from '../components/ArtistRow'
-import Header from '../components/Header'
-import Spinner from '../components/Spinner'
-import TimeRangeRadio from '../components/TimeRangeRadio'
+import { useEffect } from 'react'
+
+import Artist from '../components/Artists/Artist'
+import ArtistPlaceholder from '../components/Artists/ArtistPlaceholder'
+import Header from '../components/UI/Header'
 import { useBoundStore } from '../store/index'
 import { api } from '../utils/api'
-
-let topArtists: SpotifyApi.ArtistObjectFull[] = []
-let topArtistsTopTracks: SpotifyApi.TrackObjectFull[] = []
 
 const Artists = () => {
   const router = useRouter()
@@ -20,63 +17,47 @@ const Artists = () => {
     },
   })
   const timeRange = useBoundStore((state) => state.timeRange)
+  const limit = useBoundStore((state) => state.limit)
   const setTracksUriArray = useBoundStore((state) => state.setTracksUriArray)
-
   const userTopArtistsQuery = api.spotify.getUserTopArtists.useQuery(
-    { timeRange, limit: 10 },
+    { timeRange, limit },
     { keepPreviousData: true, refetchOnWindowFocus: false }
   )
-
   const topArtistsTopTracksQuery = api.spotify.getMultipleArtistsTopTracks.useQuery(
     {
-      artistsIdArray: topArtists.map((artist) => artist.id) ?? [''],
+      artistsIdArray: userTopArtistsQuery.data?.items.map((artist) => artist.id) ?? [''],
       artistsLimit: 20,
       tracksLimit: 5,
     },
-    { enabled: topArtists.length > 0 }
+    { enabled: !!userTopArtistsQuery.data?.items }
   )
 
-
-  if (userTopArtistsQuery.isSuccess) {
-    topArtists = userTopArtistsQuery.data.items
-  }
-
-  if (topArtistsTopTracks) {
-    void topArtistsTopTracksQuery.refetch()
-  }
-
-  if (topArtistsTopTracksQuery.isSuccess) {
-    topArtistsTopTracks = topArtistsTopTracksQuery.data
-    console.log(topArtistsTopTracks)
-
-    setTracksUriArray(topArtistsTopTracks.map((track) => track.uri).sort(() => Math.random() - 0.5))
-  }
+  useEffect(() => {
+    if (topArtistsTopTracksQuery.isSuccess) {
+      setTracksUriArray(
+        topArtistsTopTracksQuery.data.map((track) => track.uri).sort(() => Math.random() - 0.5)
+      )
+    }
+  }, [topArtistsTopTracksQuery, setTracksUriArray])
 
   return (
     <>
-      <Header title="Your Top 10 Artists">
-        <TimeRangeRadio />
-      </Header>
-      {topArtistsTopTracksQuery.isLoading ? (
-        <Spinner />
-      ) : (
-        <>
-          {topArtists.length > 0 && (
-            <>
-              <div className="hidden grid pb-40 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-                {topArtists.map((artist) => (
-                  <Artist key={artist.id} {...artist} />
-                ))}
-              </div>
-              <div>
-                {topArtists.map((artist) => (
-                  <ArtistRow key={artist.id} artist={artist} />
-                ))}
-              </div>
-            </>
-          )}
-        </>
-      )}
+      <Header title="Your Top Artists" />
+      <div className="grid grid-cols-2 pb-40 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        {userTopArtistsQuery.isLoading || userTopArtistsQuery.isFetching ? (
+          <>
+            {[...new Array(limit).keys()].map((_, index) => (
+              <ArtistPlaceholder key={index} />
+            ))}
+          </>
+        ) : (
+          <>
+            {userTopArtistsQuery.data?.items.map((artist) => (
+              <Artist key={artist.id} artist={artist} />
+            ))}
+          </>
+        )}
+      </div>
     </>
   )
 }

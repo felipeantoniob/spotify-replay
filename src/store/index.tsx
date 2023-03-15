@@ -49,8 +49,21 @@ const createTimeRangeSlice: StateCreator<
   setTimeRange: (timeRange) => set({ timeRange }),
 })
 
-export const useBoundStore = create<PlaybackSlice & PlaylistSlice & TimeRangeSlice>()((...a) => ({
-  ...createPlaybackSlice(...a),
-  ...createPlaylistSlice(...a),
-  ...createTimeRangeSlice(...a),
-}))
+interface LimitSlice {
+  limit: number
+  setLimit: (limit: number) => void
+}
+
+const createLimitSlice: StateCreator<LimitSlice & LimitSlice, [], [], LimitSlice> = (set) => ({
+  limit: 25,
+  setLimit: (limit) => set({ limit }),
+})
+
+export const useBoundStore = create<PlaybackSlice & PlaylistSlice & TimeRangeSlice & LimitSlice>()(
+  (...a) => ({
+    ...createPlaybackSlice(...a),
+    ...createPlaylistSlice(...a),
+    ...createTimeRangeSlice(...a),
+    ...createLimitSlice(...a),
+  })
+)

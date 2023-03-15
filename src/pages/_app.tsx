@@ -1,3 +1,4 @@
+import { Inter } from '@next/font/google'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { httpBatchLink } from '@trpc/client/links/httpBatchLink'
@@ -11,7 +12,6 @@ import Layout from '../components/Layout'
 import type { AppRouter } from '../server/api/root'
 import '../styles/globals.css'
 const queryClient = new QueryClient()
-import { Inter } from '@next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,7 +31,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
           <Component {...pageProps} />
         </Layout>
       </SessionProvider>
-      <ReactQueryDevtools initialIsOpen={true} />
+      <ReactQueryDevtools position="top-right" initialIsOpen={false} />
     </QueryClientProvider>
   )
 }

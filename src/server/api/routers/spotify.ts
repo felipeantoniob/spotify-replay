@@ -58,22 +58,6 @@ export const spotifyRouter = createTRPCRouter({
       return response.body
     }),
 
-  getUserRecentTracks: spotifyProcedure
-    .input(
-      z.object({
-        limit: z.number(),
-      })
-    )
-    .query(async ({ ctx, input }) => {
-      const { limit } = input
-      const response = await ctx.spotifyApi.getMyRecentlyPlayedTracks({ limit })
-
-      if (response.statusCode !== 200) {
-        throw new Error('Network response was not ok')
-      }
-      return response.body
-    }),
-
   getUserInfo: spotifyProcedure.query(async ({ ctx }) => {
     const response = await ctx.spotifyApi.getMe()
 
@@ -116,7 +100,6 @@ export const spotifyRouter = createTRPCRouter({
       )
 
       if (response.statusCode !== 201) {
-        console.log(response.statusCode)
         throw new Error('Network response was not ok')
       }
       return response.body.id

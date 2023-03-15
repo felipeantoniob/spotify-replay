@@ -1,13 +1,11 @@
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import Header from '../components/Header'
-import Spinner from '../components/Spinner'
-import TimeRangeRadio from '../components/TimeRangeRadio'
-import Track from '../components/Track'
+import { useEffect } from 'react'
+import Header from '../components/UI/Header'
+import Track from '../components/Tracks/Track'
+import TrackPlaceholder from '../components/Tracks/TrackPlaceholder'
 import { useBoundStore } from '../store/index'
 import { api } from '../utils/api'
-
-let topTracks: SpotifyApi.TrackObjectFull[] = []
 
 const Tracks = () => {
   const router = useRouter()
@@ -18,41 +16,35 @@ const Tracks = () => {
     },
   })
   const timeRange = useBoundStore((state) => state.timeRange)
+  const limit = useBoundStore((state) => state.limit)
   const setTracksUriArray = useBoundStore((state) => state.setTracksUriArray)
-
   const userTopTracksQuery = api.spotify.getUserTopTracks.useQuery(
-    { timeRange, limit: 10 },
+    { timeRange, limit },
     { keepPreviousData: true, refetchOnWindowFocus: false }
   )
 
-  if (userTopTracksQuery.isSuccess) {
-    topTracks = userTopTracksQuery.data.items
-    setTracksUriArray(topTracks.map((track) => track.uri))
-  }
+  useEffect(() => {
+    if (userTopTracksQuery.isSuccess) {
+      setTracksUriArray(userTopTracksQuery.data.items.map((track) => track.uri))
+    }
+  }, [setTracksUriArray, userTopTracksQuery.data?.items, userTopTracksQuery.isSuccess])
 
   return (
     <>
-      <Header title="Your Top 10 Songs">
-        <TimeRangeRadio />
-      </Header>
-      {userTopTracksQuery.isLoading ? (
-        <Spinner />
+      <Header title="Your Top Tracks" />
+      {userTopTracksQuery.isLoading || userTopTracksQuery.isFetching ? (
+        <>
+          {[...new Array(limit).keys()].map((_, index) => (
+            <TrackPlaceholder key={index} />
+          ))}
+        </>
       ) : (
         <>
-          {topTracks.length > 0 && (
-            <div className="flex flex-col pb-40">
-              {topTracks.map((track, index) => (
-                <Track
-                  key={track.id}
-                  track={track}
-                  index={index}
-                  showIndex
-                  showAlbum
-                  showDuration
-                />
-              ))}
-            </div>
-          )}
+          <div className="mx-4 flex flex-col pb-40">
+            {userTopTracksQuery?.data?.items.map((track, index) => (
+              <Track key={track.id} track={track} index={index} showIndex showAlbum showDuration />
+            ))}
+          </div>
         </>
       )}
     </>
