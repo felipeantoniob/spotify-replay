@@ -8,7 +8,7 @@ import { ArtistsIcon, GenresIcon, LogOutIcon, ProfileIcon, TracksIcon } from '..
 const NavigationRail = () => {
   const router = useRouter()
   return (
-    <nav className="fixed left-0 bottom-0 hidden h-full w-20 flex-col items-center overflow-y-scroll rounded-r-2xl bg-background md:flex">
+    <nav className="fixed left-0 bottom-0 hidden h-full w-20 flex-col items-center overflow-y-auto overflow-x-hidden rounded-r-2xl bg-background md:flex">
       <Link href="/profile" className="mt-16 flex flex-col items-center justify-center gap-1">
         <Button
           intent="navigation"
