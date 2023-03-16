@@ -25,7 +25,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
           name="description"
           content="Personalized music dashboard that displays users' listening habits, including their top artists, songs, and genres."
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <div
         className={twMerge(
