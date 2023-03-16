@@ -1,3 +1,5 @@
+import { twMerge } from 'tailwind-merge'
+
 export const ReplayLogo = () => (
   <svg width="70" height="24" viewBox="0 0 70 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
@@ -85,9 +87,9 @@ export const GenresIcon = ({ isSelected }: { isSelected: boolean }) => (
   </svg>
 )
 
-export const LogOutIcon = () => (
+export const LogOutIcon = ({ className }: { className?: string }) => (
   <svg
-    className="fill-primary"
+    className={(twMerge('fill-primary'), className)}
     width="18"
     height="18"
     viewBox="0 0 18 18"

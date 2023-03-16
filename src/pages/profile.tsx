@@ -47,9 +47,9 @@ const Profile = () => {
             <ReplayLogo />
             <button
               onClick={() => void signOut()}
-              className="flex items-center justify-center rounded-full bg-[#5727A6] p-2 md:hidden"
+              className="group flex items-center justify-center rounded-md border-2 border-outline p-2 transition-all active:border-transparent active:bg-[#C8B5E1] md:hidden"
             >
-              <LogOutIcon />
+              <LogOutIcon className="fill-white group-active:fill-on-primary-container" />
             </button>
           </div>
           {userInfoQuery?.data?.body && (
