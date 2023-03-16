@@ -19,8 +19,8 @@ const ArtistsCarousel = ({ artists }: ArtistsCarouselProps) => {
             <Image
               src={artist.images[0]?.url ?? ''}
               alt="image"
-              width={80}
-              height={80}
+              width={320}
+              height={320}
               className="aspect-square w-full rounded-full object-cover"
             />
             <p className="truncate text-sm font-bold text-white">{artist.name}</p>

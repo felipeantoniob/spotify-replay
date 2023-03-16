@@ -53,7 +53,7 @@ const Profile = () => {
             </button>
           </div>
           {userInfoQuery?.data?.body && (
-            <h1 className="pt-4 text-left font-sans text-2xl font-bold">
+            <h1 className="pt-4 text-left font-sans text-2xl font-bold text-white">
               Welcome to your replay, {userInfoQuery.data.body.display_name}!
             </h1>
           )}
