@@ -32,8 +32,8 @@ const TracksCarousel = ({ tracks }: TracksCarouselProps) => {
             <Image
               src={track?.album.images[0]?.url ?? ''}
               alt="image"
-              width={80}
-              height={80}
+              width={320}
+              height={320}
               className={`aspect-square w-full object-cover`}
             />
             <p className="truncate text-left text-sm font-bold text-white">{track.name}</p>
