@@ -9,7 +9,7 @@ const Home: NextPage = () => {
         <div className="flex flex-col items-center justify-center">
           <AppLogo />
         </div>
-        <div className="mt-16 text-center font-sans text-lg">
+        <div className="mt-16 text-center font-sans text-lg text-on-primary">
           <p>
             <span className="font-bold">Recap</span> songs
           </p>
