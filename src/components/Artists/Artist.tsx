@@ -17,8 +17,8 @@ const Artist = ({ artist }: ArtistProps) => {
           src={artist.images[0]?.url ?? ''}
           alt="profile picture"
           draggable="false"
-          height={128}
-          width={128}
+          height={192}
+          width={192}
           onClick={toggleModal}
           className="h-32 w-32 rounded-full object-cover transition-all sm:h-48 sm:w-48"
         />
