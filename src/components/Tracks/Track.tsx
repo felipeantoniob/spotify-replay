@@ -24,7 +24,7 @@ const Track = ({ track, index, showIndex, showDuration, showAlbum }: TrackProps)
   return (
     <div
       className={twMerge(
-        'group my-2 flex flex-row rounded-md transition-all duration-75 hover:bg-on-primary-container/25',
+        'group my-2 flex flex-row rounded-md text-on-primary transition-all duration-75 hover:bg-on-primary-container/25',
         uri === track.id &&
           'bg-on-primary-container text-tertiary-container hover:bg-on-primary-container'
       )}
