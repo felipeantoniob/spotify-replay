@@ -40,7 +40,7 @@ const Profile = () => {
     )
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pt-8">
       <div className="flex flex-col pb-40 text-center">
         <div className="mx-4">
           <div className="flex flex-row justify-between">
