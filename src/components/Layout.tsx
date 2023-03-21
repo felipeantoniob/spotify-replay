@@ -38,7 +38,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <div className="relative">
         <main
           className={twMerge(
-            'z-10 pt-8',
+            'z-10',
             sen.variable,
             ROUTERS_WITH_BOTTOM_TABS.includes(router.pathname) && 'md:pl-20'
           )}

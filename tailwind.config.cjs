@@ -16,6 +16,7 @@ module.exports = {
         'on-primary-container': '#250059',
         'tertiary-container': '#FFDF9E',
         'on-tertiary-container': '#261A00',
+        'error-container': '#ffdad6',
         background: '#fffbff',
         'on-background': '#1D1B1E',
         surface: '#fffbff',
