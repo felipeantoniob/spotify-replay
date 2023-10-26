@@ -1,4 +1,4 @@
-import { Sen } from '@next/font/google'
+import { Sen } from 'next/font/google'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import type { ReactNode } from 'react'
