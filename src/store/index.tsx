@@ -6,7 +6,7 @@ interface PlaybackSlice {
   isPlaying: boolean
   setIsPlaying: (isPlaying: boolean) => void
 }
-const createPlaybackSlice: StateCreator<PlaybackSlice & PlaylistSlice, [], [], PlaybackSlice> = (
+const createPlaybackSlice: StateCreator<PlaybackSlice, [], [], PlaybackSlice> = (
   set
 ) => ({
   uri: '',
@@ -23,7 +23,7 @@ interface PlaylistSlice {
   tracksUriArray: string[]
   setTracksUriArray: (tracksUriArray: string[]) => void
 }
-const createPlaylistSlice: StateCreator<PlaybackSlice & PlaylistSlice, [], [], PlaylistSlice> = (
+const createPlaylistSlice: StateCreator<PlaylistSlice, [], [], PlaylistSlice> = (
   set
 ) => ({
   title: '',
@@ -40,7 +40,7 @@ interface TimeRangeSlice {
 }
 
 const createTimeRangeSlice: StateCreator<
-  TimeRangeSlice & TimeRangeSlice,
+  TimeRangeSlice,
   [],
   [],
   TimeRangeSlice
@@ -54,7 +54,7 @@ interface LimitSlice {
   setLimit: (limit: number) => void
 }
 
-const createLimitSlice: StateCreator<LimitSlice & LimitSlice, [], [], LimitSlice> = (set) => ({
+const createLimitSlice: StateCreator<LimitSlice, [], [], LimitSlice> = (set) => ({
   limit: 25,
   setLimit: (limit) => set({ limit }),
 })
