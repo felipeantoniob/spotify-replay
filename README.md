@@ -185,7 +185,6 @@ Project Link: [https://github.com/felipeantoniob/spotify-replay](https://github.
 
 ## Acknowledgments
 
-- [React Icons](https://react-icons.github.io/react-icons/search)
 - [Day.js](https://day.js.org/)
 - [Chart.js](https://www.chartjs.org/)
 - [react-chartjs-2](https://react-chartjs-2.js.org/)

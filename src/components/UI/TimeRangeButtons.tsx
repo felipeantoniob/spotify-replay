@@ -8,7 +8,7 @@ const TimeRangeButtons = (): JSX.Element => {
   const setTimeRange = useBoundStore((state) => state.setTimeRange)
 
   return (
-    <div role="button" className="btn-group gap-2">
+    <div className="inline-flex gap-2">
       <Button
         intent={timeRange === 'long_term' ? 'secondary' : 'outline'}
         size="small"

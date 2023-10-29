@@ -1,4 +1,3 @@
-import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -6,7 +5,6 @@ import { useBoundStore } from '../../store'
 import { Icon } from './Icon'
 
 const LimitSelector = () => {
-  const [parent] = useAutoAnimate({ duration: 300 })
   const [isDropdownVisible, setIsDropdownVisible] = useState(false)
   const limit = useBoundStore((state) => state.limit)
   const setLimit = useBoundStore((state) => state.setLimit)
@@ -17,9 +15,9 @@ const LimitSelector = () => {
         <Icon id="three-dots-vertical" width="4" height="17" />
       </button>
       {isDropdownVisible && (
-        <div ref={parent}>
+        <div>
           <div className="fixed inset-0" onClick={() => setIsDropdownVisible(false)} />
-          <div className="absolute right-0 top-2 z-10 rounded-md bg-on-primary-container text-on-primary shadow-xl">
+          <div className="absolute right-0 top-8 z-10 rounded-md bg-on-primary-container text-on-primary shadow-xl">
             <p className="select-none px-2 py-1">Show</p>
             {[10, 25, 50].map((value) => (
               <button

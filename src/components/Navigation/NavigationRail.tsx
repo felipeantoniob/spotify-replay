@@ -100,12 +100,12 @@ const NavigationRail = () => {
         </Link>
       </div>
       <div className="mt-auto flex flex-1 flex-col items-center justify-center pt-4">
-        <button
+        <div
           className="flex flex-col items-center justify-center gap-1 rounded-2xl px-2 py-1"
           onClick={() => void signOut()}
         >
           <NavigationButton {...BUTTONS[4]} />
-        </button>
+        </div>
       </div>
     </nav>
   )
