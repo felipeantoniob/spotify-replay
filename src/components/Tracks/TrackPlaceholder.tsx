@@ -1,4 +1,4 @@
-import { BsPlayFill } from 'react-icons/bs'
+import { Icon } from '../UI/Icon'
 
 const TrackPlaceholder = () => {
   return (
@@ -6,7 +6,7 @@ const TrackPlaceholder = () => {
       <div className="cursor-pointer">
         <h6 className="flex h-full w-12 items-center justify-center text-sm text-white">
           <div className="h-4 w-6 rounded-full bg-gray-500 group-hover:hidden" />
-          <BsPlayFill size="20px" className="hidden group-hover:block" />
+          <Icon id="play" width={20} height={20} className="hidden group-hover:block" />
         </h6>
       </div>
       <div className="flex flex-1 flex-row overflow-hidden transition-all group-hover:rounded-md group-hover:bg-[#895EDB]">

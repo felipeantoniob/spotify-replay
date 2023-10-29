@@ -3,8 +3,10 @@ import type { SVGProps } from 'react'
 const ICONS_IDS = [
   'artists',
   'close',
+  'explicit',
   'genres',
   'log-out',
+  'play',
   'playing',
   'playlist',
   'profile',

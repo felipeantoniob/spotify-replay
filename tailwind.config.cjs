@@ -27,5 +27,4 @@ module.exports = {
     },
   },
   important: true,
-  plugins: [require('daisyui')],
 }

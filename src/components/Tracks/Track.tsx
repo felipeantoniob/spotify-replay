@@ -1,6 +1,4 @@
 import Image from 'next/image'
-import { BsPlayFill } from 'react-icons/bs'
-import { MdExplicit } from 'react-icons/md'
 import { twMerge } from 'tailwind-merge'
 
 import { useBoundStore } from '../../store/index'
@@ -38,8 +36,10 @@ const Track = ({ track, index, showIndex, showDuration, showAlbum }: TrackProps)
           className="flex h-full w-10 cursor-pointer items-center justify-center self-center"
         >
           {uri !== track.id && <div className="text-sm group-hover:hidden">{index + 1}</div>}
-          {uri !== track.id && <BsPlayFill size="20px" className="hidden group-hover:block" />}
-          {uri === track.id && !isPlaying && <BsPlayFill size="20px" />}
+          {uri !== track.id && (
+            <Icon id="play" width={20} height={20} className="hidden group-hover:block" />
+          )}
+          {uri === track.id && !isPlaying && <Icon id="play" width={20} height={20} />}
           {uri === track.id && isPlaying && <Icon id="playing" width="12" height="14" />}
         </button>
       )}
@@ -56,8 +56,10 @@ const Track = ({ track, index, showIndex, showDuration, showAlbum }: TrackProps)
           <div className="flex flex-row items-center">
             <h2 className="truncate text-left text-sm font-medium ">{track.name}</h2>
           </div>
-          <div className="flex items-center truncate text-left ">
-            {track.explicit && <MdExplicit size="16px" className="mr-1 h-full shrink-0 " />}
+          <div className="flex items-center truncate text-left">
+            {track.explicit && (
+              <Icon id="explicit" width={16} height={16} className="mr-1 shrink-0" />
+            )}
             <h4 className="truncate text-sm font-medium">
               {track.artists
                 .map((artist: SpotifyApi.ArtistObjectSimplified) => {
