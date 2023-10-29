@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { useBoundStore } from '../../store'
-import { ThreeDotsVerticalIcon } from './Icons'
+import { Icon } from './Icon'
 
 const LimitSelector = () => {
   const [parent] = useAutoAnimate({ duration: 300 })
@@ -14,12 +14,12 @@ const LimitSelector = () => {
   return (
     <div className="relative">
       <button className="px-3 py-1" onClick={() => setIsDropdownVisible(true)}>
-        <ThreeDotsVerticalIcon />
+        <Icon id="three-dots-vertical" width="4" height="17" />
       </button>
       {isDropdownVisible && (
         <div ref={parent}>
           <div className="fixed inset-0" onClick={() => setIsDropdownVisible(false)} />
-          <div className="absolute top-2 right-0 z-10 rounded-md bg-on-primary-container text-on-primary shadow-xl">
+          <div className="absolute right-0 top-2 z-10 rounded-md bg-on-primary-container text-on-primary shadow-xl">
             <p className="select-none px-2 py-1">Show</p>
             {[10, 25, 50].map((value) => (
               <button

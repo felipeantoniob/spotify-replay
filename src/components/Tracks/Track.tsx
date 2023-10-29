@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge'
 
 import { useBoundStore } from '../../store/index'
 import { msToMinutesAndSeconds } from '../../utils'
-import { PlayingIcon } from '../UI/Icons'
+import { Icon } from '../UI/Icon'
 
 type TrackProps = {
   track: SpotifyApi.TrackObjectFull
@@ -40,7 +40,7 @@ const Track = ({ track, index, showIndex, showDuration, showAlbum }: TrackProps)
           {uri !== track.id && <div className="text-sm group-hover:hidden">{index + 1}</div>}
           {uri !== track.id && <BsPlayFill size="20px" className="hidden group-hover:block" />}
           {uri === track.id && !isPlaying && <BsPlayFill size="20px" />}
-          {uri === track.id && isPlaying && <PlayingIcon />}
+          {uri === track.id && isPlaying && <Icon id="playing" width="12" height="14" />}
         </button>
       )}
       <div className={twMerge('flex flex-1 flex-row overflow-hidden transition-all')}>
