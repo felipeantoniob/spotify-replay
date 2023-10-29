@@ -4,28 +4,57 @@ import { twMerge } from 'tailwind-merge'
 
 import { useBoundStore } from '../../store'
 import { Button } from '../UI/Button'
-import { ArtistsIcon, GenresIcon, ProfileIcon, TracksIcon } from '../UI/Icons'
+import { Icon, type IconId } from '../UI/Icon'
+
+const TabIcon = ({
+  isSelected,
+  id,
+  width,
+  height,
+}: {
+  isSelected: boolean
+  id: IconId
+  width: number
+  height: number
+}) => (
+  <Icon
+    id={id}
+    width={width}
+    height={height}
+    className={`group-hover:text-on-primary-container ${
+      isSelected ? 'text-on-primary-container' : 'text-primary'
+    }`}
+  />
+)
 
 const TABS = [
   {
     label: 'Profile',
     pathname: '/profile',
-    icon: ProfileIcon,
+    iconId: 'profile',
+    iconWidth: 20,
+    iconHeight: 20,
   },
   {
     label: 'Tracks',
     pathname: '/tracks',
-    icon: TracksIcon,
+    iconId: 'tracks',
+    iconWidth: 13,
+    iconHeight: 18,
   },
   {
     label: 'Artists',
     pathname: '/artists',
-    icon: ArtistsIcon,
+    iconId: 'artists',
+    iconWidth: 20,
+    iconHeight: 20,
   },
   {
     label: 'Genres',
     pathname: '/genres',
-    icon: GenresIcon,
+    iconId: 'genres',
+    iconWidth: 23,
+    iconHeight: 20,
   },
 ] as const
 
@@ -46,7 +75,12 @@ const BottomTabsNavigator = () => {
               size="medium"
               className={twMerge(tab.pathname.includes(router.pathname) && 'bg-primary-container')}
             >
-              {tab.icon({ isSelected: tab.pathname.includes(router.pathname) })}
+              <TabIcon
+                isSelected={tab.pathname.includes(router.pathname)}
+                id={tab.iconId}
+                width={tab.iconWidth}
+                height={tab.iconHeight}
+              />
             </Button>
             {!isPlaying && <p className="text-xs font-medium text-primary">{tab.label}</p>}
           </Link>

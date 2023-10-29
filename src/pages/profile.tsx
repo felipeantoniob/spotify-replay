@@ -1,9 +1,9 @@
 import { signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 
-import { LogOutIcon, ReplayLogo } from '../components/UI/Icons'
 import ArtistsCarousel from '../components/Profile/ArtistsCarousel'
 import TracksCarousel from '../components/Profile/TracksCarousel'
+import { Icon } from '../components/UI/Icon'
 import Spinner from '../components/UI/Spinner'
 import { api } from '../utils/api'
 
@@ -44,12 +44,17 @@ const Profile = () => {
       <div className="flex flex-col pb-40 text-center">
         <div className="mx-4">
           <div className="flex flex-row justify-between">
-            <ReplayLogo />
+            <Icon id="replay" width="70" height="24" />
             <button
               onClick={() => void signOut()}
-              className="group flex items-center justify-center rounded-md border-2 border-outline p-2 transition-all active:border-transparent active:bg-[#C8B5E1] md:hidden"
+              className="group flex items-center justify-center rounded-md border-0 p-2 transition-all active:border-transparent active:bg-[#C8B5E1] md:hidden"
             >
-              <LogOutIcon className="fill-white group-active:fill-on-primary-container" />
+              <Icon
+                id="log-out"
+                width="18"
+                height="18"
+                className="fill-white group-active:fill-on-primary-container"
+              />
             </button>
           </div>
           {userInfoQuery?.data?.body && (
