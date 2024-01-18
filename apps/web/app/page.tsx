@@ -1,8 +1,10 @@
 import Image from "next/image";
+
+import { Button } from "@spotify-replay/ui/button";
 import { Card } from "@spotify-replay/ui/card";
 import { Code } from "@spotify-replay/ui/code";
+
 import styles from "./page.module.css";
-import { Button } from "@spotify-replay/ui/button";
 
 function Gradient({
   conic,
