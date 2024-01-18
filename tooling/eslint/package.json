@@ -18,12 +18,15 @@
     "@next/eslint-plugin-next": "^14.0.4",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
+    "eslint-plugin-mdx": "^2.3.2",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-turbo": "^1.11.3",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "eslint-plugin-storybook": "^0.6.15"
   },
   "devDependencies": {
     "@spotify-replay/prettier-config": "workspace:^0.1.0",
