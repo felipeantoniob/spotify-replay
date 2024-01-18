@@ -45,9 +45,6 @@ importers:
       '@spotify-replay/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
-      '@types/eslint':
-        specifier: ^8.56.1
-        version: 8.56.1
       '@types/node':
         specifier: ^20.10.6
         version: 20.10.6
@@ -97,9 +94,6 @@ importers:
       '@spotify-replay/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
-      '@types/eslint':
-        specifier: ^8.56.1
-        version: 8.56.1
       '@types/node':
         specifier: ^20.10.6
         version: 20.10.6
@@ -133,9 +127,6 @@ importers:
       '@turbo/gen':
         specifier: ^1.11.3
         version: 1.11.3(@types/node@20.10.6)(typescript@5.3.3)
-      '@types/eslint':
-        specifier: ^8.56.1
-        version: 8.56.1
       '@types/node':
         specifier: ^20.10.6
         version: 20.10.6
