@@ -1,5 +1,5 @@
 {
-  "extends": "@spotify-replay/typescript-config/react-library.json",
+  "extends": "@spotify-replay/tsconfig/base.json",
   "compilerOptions": {
     "outDir": "dist"
   },

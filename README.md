@@ -20,7 +20,7 @@ This Turborepo includes the following packages/apps:
 - `web`: another [Next.js](https://nextjs.org/) app
 - `@spotify-replay/ui`: a stub React component library shared by both `web` and `docs` applications
 - `@spotify-replay/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@spotify-replay/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- `@spotify-replay/tsconfig`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 

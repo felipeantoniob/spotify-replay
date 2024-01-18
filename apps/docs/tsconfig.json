@@ -1,5 +1,5 @@
 {
-  "extends": "@spotify-replay/typescript-config/nextjs.json",
+  "extends": "@spotify-replay/tsconfig/base.json",
   "compilerOptions": {
     "plugins": [
       {
