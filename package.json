@@ -1,5 +1,5 @@
 {
-  "name": "my-turborepo",
+  "name": "spotify-replay",
   "private": true,
   "scripts": {
     "build": "turbo build",
@@ -8,8 +8,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@spotify-replay/eslint-config": "workspace:*",
+    "@spotify-replay/typescript-config": "workspace:*",
     "prettier": "^3.1.1",
     "turbo": "latest"
   },
