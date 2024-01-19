@@ -1,7 +1,8 @@
 import type { Artist as ArtistObject } from "@spotify/web-api-ts-sdk";
 import type { ImageProps } from "next/image";
 import type { HTMLProps } from "react";
-import Image from "next/image";
+
+import { Image } from "../../ui/Image/Image";
 
 interface ArtistProps {
   artist: ArtistObject;
@@ -21,15 +22,11 @@ const Artist = ({ artist, useNextImage = false }: ArtistProps) => {
   return (
     <>
       <div className="mb-12 flex flex-col items-center gap-4 text-center">
-        {useNextImage ? (
-          <Image
-            {...(defaultProps as ImageProps)}
-            src={artist.images[0]?.url ?? ""}
-          />
-        ) : (
-          <img {...defaultProps} src={artist.images[0]?.url ?? ""} />
-        )}
-
+        <Image
+          src={artist.images[0]?.url ?? ""}
+          useNextImage={useNextImage}
+          {...defaultProps}
+        />
         <h3 className="text-md font-medium text-white">{artist.name}</h3>
       </div>
     </>
