@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
+
 import {
   Select,
   SelectContent,
@@ -8,8 +10,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./Select";
-
-import React from "react";
 
 const SelectDemo = () => {
   return (
