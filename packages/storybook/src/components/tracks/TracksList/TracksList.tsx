@@ -40,4 +40,4 @@ const TracksList = ({ isLoading, limit, tracks }: TracksListProps) => {
   );
 };
 
-export default TracksList;
+export { TracksList };

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { SAMPLE_TRACKS } from "../../../constants/data";
-import TracksList from "./TracksList";
+import { TracksList } from "./TracksList";
 
 const meta = {
   title: "Tracks/TracksList",

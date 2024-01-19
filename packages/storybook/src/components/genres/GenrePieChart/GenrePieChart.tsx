@@ -70,4 +70,4 @@ const GenrePieChart = ({ genreChartData, topArtists }: GenrePieChartProps) => {
   );
 };
 
-export default GenrePieChart;
+export { GenrePieChart };

@@ -4,7 +4,7 @@ import {
   SAMPLE_ARTISTS,
   SAMPLE_GENRE_CHART_DATA,
 } from "../../../constants/data";
-import GenrePieChart from "./GenrePieChart";
+import { GenrePieChart } from "./GenrePieChart";
 
 const meta = {
   title: "Genres/GenrePieChart",
