@@ -1,5 +1,124 @@
 import type { Artist, Track } from "@spotify/web-api-ts-sdk";
 
+export const SAMPLE_GENRE_CHART_DATA = [
+  {
+    genre: "reggaeton",
+    artists: [
+      "Feid",
+      "Arcángel",
+      "Tainy",
+      "Rauw Alejandro",
+      "Myke Towers",
+      "Bad Bunny",
+      "Becky G",
+      "Alejo",
+      "KAROL G",
+      "Yng Lvcas",
+      "Danny Ocean",
+    ],
+  },
+  {
+    genre: "trap latino",
+    artists: [
+      "Feid",
+      "Arcángel",
+      "Tainy",
+      "Rauw Alejandro",
+      "Myke Towers",
+      "Rels B",
+      "Bad Bunny",
+      "Becky G",
+      "Alejo",
+      "KAROL G",
+      "Danny Ocean",
+    ],
+  },
+  {
+    genre: "urbano latino",
+    artists: [
+      "Feid",
+      "Arcángel",
+      "Tainy",
+      "Rauw Alejandro",
+      "Myke Towers",
+      "Rels B",
+      "Bad Bunny",
+      "Becky G",
+      "Alejo",
+      "KAROL G",
+      "Danny Ocean",
+    ],
+  },
+  {
+    genre: "nigerian pop",
+    artists: ["Cruel Santino", "Asake", "Tay Iwar", "Odunsi (The Engine)"],
+  },
+  {
+    genre: "rap",
+    artists: ["Don Toliver", "Chris Brown", "Kendrick Lamar", "Brent Faiyaz"],
+  },
+  {
+    genre: "alte",
+    artists: ["Cruel Santino", "Tay Iwar", "Odunsi (The Engine)"],
+  },
+  {
+    genre: "afrobeats",
+    artists: ["Asake", "Tay Iwar", "Odunsi (The Engine)"],
+  },
+  {
+    genre: "alternative r&b",
+    artists: ["Sampha", "Mariah the Scientist", "Arin Ray"],
+  },
+  {
+    genre: "indie r&b",
+    artists: ["Tone Stith", "PHABO", "RAAHiiM"],
+  },
+  {
+    genre: "corridos tumbados",
+    artists: ["Peso Pluma", "Fuerza Regida", "Oscar Maydon"],
+  },
+  {
+    genre: "pop reggaeton",
+    artists: ["Feid", "Tainy"],
+  },
+  {
+    genre: "reggaeton colombiano",
+    artists: ["Feid", "KAROL G"],
+  },
+  {
+    genre: "bedroom pop",
+    artists: ["PinkPantheress", "Omar Apollo"],
+  },
+  {
+    genre: "pop rap",
+    artists: ["Don Toliver", "Blxst"],
+  },
+  {
+    genre: "pop r&b",
+    artists: ["Vedo", "Tone Stith"],
+  },
+  {
+    genre: "r&b",
+    artists: ["Chris Brown", "Brent Faiyaz"],
+  },
+  {
+    genre: "trap soul",
+    artists: ["Tone Stith", "PHABO"],
+  },
+  {
+    genre: "sad sierreno",
+    artists: ["Peso Pluma", "Fuerza Regida"],
+  },
+  {
+    genre: "corrido",
+    artists: ["Fuerza Regida", "Oscar Maydon"],
+  },
+  {
+    genre: "sierreno",
+    artists: ["Fuerza Regida", "Oscar Maydon"],
+  },
+];
+
 export const SAMPLE_ARTISTS = [
   {
     external_urls: {
