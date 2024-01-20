@@ -1,19 +1,29 @@
 "use client";
 
+import { useEffect } from "react";
+
 import { useBoundStore } from "@spotify-replay/store";
 import { Header } from "@spotify-replay/ui/src/components/common/Header/Header";
 import { TracksList } from "@spotify-replay/ui/src/components/tracks/TracksList/TracksList";
 
+import FloatingActionButtonContainer from "../../components/FloatingActionButtonContainer";
 import NavigationContainer from "../../components/NavigationContainer";
 import { api } from "../../trpc/react";
 
 function Tracks() {
   const timeRange = useBoundStore((state) => state.timeRange);
   const limit = useBoundStore((state) => state.limit);
+  const setTracksUriArray = useBoundStore((state) => state.setTracksUriArray);
   const topTracks = api.spotify.getUserTopTracks.useQuery({
     timeRange,
     limit,
   });
+
+  useEffect(() => {
+    if (topTracks.isSuccess) {
+      setTracksUriArray(topTracks.data.map((track) => track.uri));
+    }
+  }, [setTracksUriArray, topTracks.data, topTracks.isSuccess]);
 
   return (
     <>
@@ -29,6 +39,7 @@ function Tracks() {
           limit={limit}
         />
       </main>
+      <FloatingActionButtonContainer />
       <NavigationContainer />
     </>
   );
