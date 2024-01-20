@@ -3,6 +3,10 @@ import "../styles/globals.css";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
+import { getServerSession } from "next-auth";
+
+import AuthSessionProvider from "../components/AuthSessionProvider";
+import authOptions from "./api/auth/[...nextauth]/authOptions";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,10 +20,18 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.png" }],
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const session = await getServerSession(authOptions);
+
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-primary`}>{children}</body>
+      <AuthSessionProvider session={session}>
+        <body className={`${inter.className} bg-primary`}>{children}</body>
+      </AuthSessionProvider>
     </html>
   );
 }

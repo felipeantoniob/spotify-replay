@@ -81,10 +81,10 @@ const AppLogo = () => (
 
 export default function Home() {
   return (
-    <main className="from-on-primary-container flex min-h-screen flex-col items-center justify-center bg-gradient-to-l from-5%  to-primary text-white">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-l from-on-primary-container from-5%  to-primary text-white">
       <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
         <AppLogo />
-        <div className="text-on-primary text-center font-sans text-lg">
+        <div className="text-center font-sans text-lg text-on-primary">
           <p>
             <span className="font-bold">Recap</span> songs
           </p>
