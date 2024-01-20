@@ -6,8 +6,8 @@ import type {
 } from "@spotify/web-api-ts-sdk";
 import { SpotifyApi } from "@spotify/web-api-ts-sdk";
 
-import type { AuthUser } from "../../app/api/auth/[...nextauth]/authOptions";
-import { auth, signIn } from "../../app/api/auth/[...nextauth]/route";
+import type { AuthUser } from "../types/index";
+import { auth, signIn } from "../index";
 
 /**
  * A class that implements the IAuthStrategy interface and wraps the NextAuth functionality.

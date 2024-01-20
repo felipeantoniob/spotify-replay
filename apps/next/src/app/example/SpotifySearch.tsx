@@ -1,4 +1,4 @@
-import sdk from "../../lib/spotify-sdk/ClientInstance";
+import sdk from "@spotify-replay/auth/sdk";
 
 const getResults = async () => {
   const results = await sdk.search("The Beatles", ["artist"]);

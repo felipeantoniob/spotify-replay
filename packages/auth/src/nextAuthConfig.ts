@@ -1,6 +1,7 @@
 import type { DefaultSession, NextAuthConfig } from "next-auth";
 
-import spotifyProfile, { refreshAccessToken } from "./SpotifyProfile";
+import type { AuthUser } from "./types";
+import spotifyProfile, { refreshAccessToken } from "./spotifyProfile";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -14,19 +15,6 @@ declare module "next-auth" {
     expires: string;
     error?: string;
   }
-}
-
-export interface AuthUser {
-  name: string;
-  email: string;
-  image: string;
-  access_token: string;
-  token_type: string;
-  expires_at: number;
-  expires_in: number;
-  refresh_token: string;
-  scope: string;
-  id: string;
 }
 
 interface SessionToken {
@@ -52,7 +40,7 @@ interface SessionToken {
  *
  * @see https://next-auth.js.org/configuration/options
  */
-const authOptions: NextAuthConfig = {
+const nextAuthConfig: NextAuthConfig = {
   providers: [spotifyProfile],
   session: {
     maxAge: 60 * 60, // 1hr
@@ -80,7 +68,7 @@ const authOptions: NextAuthConfig = {
 
       return updatedToken;
     },
-    async session({ session, token }) {
+    session({ session, token }) {
       const sessionToken = token as unknown as SessionToken;
 
       const user: AuthUser = {
@@ -105,4 +93,4 @@ const authOptions: NextAuthConfig = {
   theme: { colorScheme: "dark" },
 };
 
-export default authOptions;
+export default nextAuthConfig;

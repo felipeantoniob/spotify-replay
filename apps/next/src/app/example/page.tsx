@@ -1,7 +1,7 @@
+import { auth, signIn, signOut } from "@spotify-replay/auth";
 import { Icon } from "@spotify-replay/ui/src/components/common/Icon/Icon";
 import { Button } from "@spotify-replay/ui/src/components/ui/Button/Button";
 
-import { auth, signIn, signOut } from "../api/auth/[...nextauth]/route";
 import SpotifySearch from "./SpotifySearch";
 
 export default async function Home() {

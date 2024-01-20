@@ -1,7 +1,6 @@
+import { signIn } from "@spotify-replay/auth";
 import { Icon } from "@spotify-replay/ui/src/components/common/Icon/Icon";
 import { Button } from "@spotify-replay/ui/src/components/ui/Button/Button";
-
-import { signIn } from "../app/api/auth/[...nextauth]/route";
 
 const LogInButton = () => {
   return (
