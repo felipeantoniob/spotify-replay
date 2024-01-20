@@ -2,7 +2,9 @@
 
 import { Header } from "@spotify-replay/ui/src/components/common/Header/Header";
 import { ArtistsCarousel } from "@spotify-replay/ui/src/components/profile/ArtistsCarousel/ArtistsCarousel";
+import { ArtistsCarouselSkeleton } from "@spotify-replay/ui/src/components/profile/ArtistsCarouselSkeleton/ArtistsCarouselSkeleton";
 import { TracksCarousel } from "@spotify-replay/ui/src/components/profile/TracksCarousel/TracksCarousel";
+import { TracksCarouselSkeleton } from "@spotify-replay/ui/src/components/profile/TracksCarouselSkeleton/TracksCarouselSkeleton";
 
 import NavigationContainer from "../../components/NavigationContainer";
 import { api } from "../../trpc/react";
@@ -24,10 +26,19 @@ function Profile() {
     <>
       <main className="pb-40 md:pl-20">
         <Header
-          title={`Welcome to your replay, ${userInfo.data?.display_name}!`}
+          title={`Welcome to your replay${userInfo.data?.display_name ? `, ${userInfo.data.display_name}!` : ""}`}
         />
-        <TracksCarousel tracks={topTracks.data ?? []} useNextImage />
-        <ArtistsCarousel artists={topArtists.data ?? []} useNextImage />
+        {topTracks.data ? (
+          <TracksCarousel tracks={topTracks.data ?? []} useNextImage />
+        ) : (
+          <TracksCarouselSkeleton />
+        )}
+
+        {topArtists.data ? (
+          <ArtistsCarousel artists={topArtists.data ?? []} useNextImage />
+        ) : (
+          <ArtistsCarouselSkeleton />
+        )}
       </main>
       <NavigationContainer />
     </>

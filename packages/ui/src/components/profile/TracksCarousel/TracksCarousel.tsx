@@ -35,7 +35,7 @@ const TracksCarousel = ({
                 <Image
                   useNextImage={useNextImage}
                   src={track?.album.images[0]?.url ?? ""}
-                  alt="image"
+                  alt={track.album.name}
                   width={320}
                   height={320}
                   className="aspect-square object-cover"

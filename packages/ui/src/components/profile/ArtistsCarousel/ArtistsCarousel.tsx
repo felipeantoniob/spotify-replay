@@ -35,7 +35,7 @@ const ArtistsCarousel = ({
                 <Image
                   useNextImage={useNextImage}
                   src={artist.images[0]?.url ?? ""}
-                  alt="image"
+                  alt={artist.name}
                   width={320}
                   height={320}
                   className="aspect-square rounded-full object-cover"
