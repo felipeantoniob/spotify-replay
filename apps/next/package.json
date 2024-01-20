@@ -1,14 +1,15 @@
 {
-  "name": "web",
+  "name": "next",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "pnpm with-env next dev",
+    "build": "pnpm with-env next build",
+    "start": "pnpm with-env next start",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
     "@spotify-replay/store": "workspace:^0.1.0",
