@@ -64,6 +64,67 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
 
+  apps/next:
+    dependencies:
+      '@spotify-replay/store':
+        specifier: workspace:^0.1.0
+        version: link:../../packages/store
+      '@spotify-replay/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      next:
+        specifier: ^14.0.4
+        version: 14.1.0(@babel/core@7.23.7)(react-dom@18.2.0)(react@18.2.0)
+      next-auth:
+        specifier: ^4.23.1
+        version: 4.24.5(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@next/eslint-plugin-next':
+        specifier: ^14.0.4
+        version: 14.1.0
+      '@spotify-replay/eslint-config':
+        specifier: workspace:^0.2.0
+        version: link:../../tooling/eslint
+      '@spotify-replay/prettier-config':
+        specifier: workspace:^0.1.0
+        version: link:../../tooling/prettier
+      '@spotify-replay/tailwind-config':
+        specifier: workspace:^0.1.0
+        version: link:../../tooling/tailwind
+      '@spotify-replay/tsconfig':
+        specifier: workspace:*
+        version: link:../../tooling/typescript
+      '@types/node':
+        specifier: ^20.10.6
+        version: 20.11.5
+      '@types/react':
+        specifier: ^18.2.46
+        version: 18.2.48
+      '@types/react-dom':
+        specifier: ^18.2.18
+        version: 18.2.18
+      dotenv-cli:
+        specifier: ^7.3.0
+        version: 7.3.0
+      eslint:
+        specifier: ^8.56.0
+        version: 8.56.0
+      tailwindcss:
+        specifier: ^3.4.0
+        version: 3.4.1
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+      zustand:
+        specifier: ^4.5.0
+        version: 4.5.0(@types/react@18.2.48)(react@18.2.0)
+
   apps/remix:
     dependencies:
       '@remix-run/css-bundle':
@@ -136,67 +197,6 @@ importers:
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
-
-  apps/web:
-    dependencies:
-      '@spotify-replay/store':
-        specifier: workspace:^0.1.0
-        version: link:../../packages/store
-      '@spotify-replay/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
-      next:
-        specifier: ^14.0.4
-        version: 14.1.0(@babel/core@7.23.7)(react-dom@18.2.0)(react@18.2.0)
-      next-auth:
-        specifier: ^4.23.1
-        version: 4.24.5(next@14.1.0)(react-dom@18.2.0)(react@18.2.0)
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@next/eslint-plugin-next':
-        specifier: ^14.0.4
-        version: 14.1.0
-      '@spotify-replay/eslint-config':
-        specifier: workspace:^0.2.0
-        version: link:../../tooling/eslint
-      '@spotify-replay/prettier-config':
-        specifier: workspace:^0.1.0
-        version: link:../../tooling/prettier
-      '@spotify-replay/tailwind-config':
-        specifier: workspace:^0.1.0
-        version: link:../../tooling/tailwind
-      '@spotify-replay/tsconfig':
-        specifier: workspace:*
-        version: link:../../tooling/typescript
-      '@types/node':
-        specifier: ^20.10.6
-        version: 20.11.5
-      '@types/react':
-        specifier: ^18.2.46
-        version: 18.2.48
-      '@types/react-dom':
-        specifier: ^18.2.18
-        version: 18.2.18
-      dotenv-cli:
-        specifier: ^7.3.0
-        version: 7.3.0
-      eslint:
-        specifier: ^8.56.0
-        version: 8.56.0
-      tailwindcss:
-        specifier: ^3.4.0
-        version: 3.4.1
-      typescript:
-        specifier: ^5.3.3
-        version: 5.3.3
-      zustand:
-        specifier: ^4.5.0
-        version: 4.5.0(@types/react@18.2.48)(react@18.2.0)
 
   packages/store:
     dependencies:

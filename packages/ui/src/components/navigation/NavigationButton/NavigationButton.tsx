@@ -34,7 +34,7 @@ const NavigationButton = ({
           width={iconWidth}
           height={iconHeight}
           className={twMerge(
-            "group-hover:text-on-primary-container text-primary",
+            "text-primary group-hover:text-on-primary-container",
             isSelected && "text-on-primary-container",
           )}
         />

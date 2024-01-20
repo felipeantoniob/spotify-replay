@@ -21,7 +21,7 @@ const Track = ({
   useNextImage,
 }: TrackProps) => {
   return (
-    <div className="text-on-primary hover:bg-on-primary-container/25 group flex flex-row rounded-md transition-all duration-75">
+    <div className="group flex flex-row rounded-md text-on-primary transition-all duration-75 hover:bg-on-primary-container/25">
       {showIndex && (
         <button className="flex h-full w-10 cursor-pointer items-center justify-center self-center ">
           <div className="text-sm group-hover:hidden">{index}</div>

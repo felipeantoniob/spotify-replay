@@ -21,7 +21,7 @@ const CreatedPlaylistDialog = ({
       <DialogTrigger asChild>
         <Button variant="outline">Open</Button>
       </DialogTrigger>
-      <DialogContent className="text-on-surface text-center sm:max-w-md">
+      <DialogContent className="text-center text-on-surface sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="text-center font-sans text-2xl font-semibold">
             Success!
@@ -47,7 +47,7 @@ const CreatedPlaylistDialog = ({
           <Button
             type="button"
             variant="secondary"
-            className="bg-spotify-green rounded-full"
+            className="rounded-full bg-spotify-green"
           >
             Open on Spotify
           </Button>
