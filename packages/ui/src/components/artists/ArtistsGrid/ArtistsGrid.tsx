@@ -14,9 +14,15 @@ interface ArtistsGridProps {
   artists: Artist[];
   isLoading: boolean;
   limit: number;
+  useNextImage?: boolean;
 }
 
-const ArtistsGrid = ({ artists, isLoading, limit }: ArtistsGridProps) => {
+const ArtistsGrid = ({
+  artists,
+  isLoading,
+  limit,
+  useNextImage = false,
+}: ArtistsGridProps) => {
   if (isLoading)
     return (
       <GridContainer>
@@ -29,7 +35,11 @@ const ArtistsGrid = ({ artists, isLoading, limit }: ArtistsGridProps) => {
   return (
     <GridContainer>
       {artists.slice(0, limit).map((artist) => (
-        <ArtistComponent key={artist.id} artist={artist} />
+        <ArtistComponent
+          key={artist.id}
+          artist={artist}
+          useNextImage={useNextImage}
+        />
       ))}
     </GridContainer>
   );

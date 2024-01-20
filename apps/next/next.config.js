@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
-  transpilePackages: ["@spotify-replay/ui"],
+const nextConfig = {
+  transpilePackages: [
+    "@spotify-replay/auth",
+    "@spotify-replay/api",
+    "@spotify-replay/store",
+    "@spotify-replay/ui",
+  ],
   images: {
     domains: [
       "i.scdn.co",
@@ -24,3 +29,5 @@ module.exports = {
     ],
   },
 };
+
+export default nextConfig;

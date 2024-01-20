@@ -3,14 +3,17 @@
 import { useBoundStore } from "@spotify-replay/store";
 import { ArtistsGrid } from "@spotify-replay/ui/src/components/artists/ArtistsGrid/ArtistsGrid";
 import { Header } from "@spotify-replay/ui/src/components/common/Header/Header";
-import { SAMPLE_ARTISTS } from "@spotify-replay/ui/src/constants/data";
 
 import NavigationContainer from "../../components/NavigationContainer";
+import { api } from "../../trpc/react";
 
 function Artists() {
+  const timeRange = useBoundStore((state) => state.timeRange);
   const limit = useBoundStore((state) => state.limit);
-  const topArtists = SAMPLE_ARTISTS;
-  const isLoading = false;
+  const topArtists = api.spotify.getUserTopArtists.useQuery({
+    timeRange,
+    limit,
+  });
 
   return (
     <>
@@ -20,7 +23,12 @@ function Artists() {
           isTimeRangeButtonsGroupVisible={true}
           isTrackCountSelectorVisible={true}
         />
-        <ArtistsGrid artists={topArtists} isLoading={isLoading} limit={limit} />
+        <ArtistsGrid
+          artists={topArtists.data ?? []}
+          isLoading={topArtists.isLoading || topArtists.isFetching}
+          limit={limit}
+          useNextImage
+        />
       </main>
       <NavigationContainer />
     </>
