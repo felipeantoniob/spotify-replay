@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@spotify-replay/store": "workspace:^0.1.0",
-    "@spotify-replay/storybook": "workspace:*",
+    "@spotify-replay/ui": "workspace:*",
     "next": "^14.0.4",
     "next-auth": "^4.23.1",
     "react": "^18.2.0",

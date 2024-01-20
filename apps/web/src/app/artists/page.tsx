@@ -1,9 +1,9 @@
 "use client";
 
 import { useBoundStore } from "@spotify-replay/store";
-import { ArtistsGrid } from "@spotify-replay/storybook/src/components/artists/ArtistsGrid/ArtistsGrid";
-import { Header } from "@spotify-replay/storybook/src/components/common/Header/Header";
-import { SAMPLE_ARTISTS } from "@spotify-replay/storybook/src/constants/data";
+import { ArtistsGrid } from "@spotify-replay/ui/src/components/artists/ArtistsGrid/ArtistsGrid";
+import { Header } from "@spotify-replay/ui/src/components/common/Header/Header";
+import { SAMPLE_ARTISTS } from "@spotify-replay/ui/src/constants/data";
 
 import NavigationContainer from "../../components/NavigationContainer";
 

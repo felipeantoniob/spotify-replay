@@ -1,9 +1,9 @@
-import { Header } from "@spotify-replay/storybook/src/components/common/Header/Header";
-import { GenrePieChart } from "@spotify-replay/storybook/src/components/genres/GenrePieChart/GenrePieChart";
+import { Header } from "@spotify-replay/ui/src/components/common/Header/Header";
+import { GenrePieChart } from "@spotify-replay/ui/src/components/genres/GenrePieChart/GenrePieChart";
 import {
   SAMPLE_ARTISTS,
   SAMPLE_GENRE_CHART_DATA,
-} from "@spotify-replay/storybook/src/constants/data";
+} from "@spotify-replay/ui/src/constants/data";
 
 import NavigationContainer from "../../components/NavigationContainer";
 

@@ -3,8 +3,8 @@
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 
-import { BottomTabsNavigator } from "@spotify-replay/storybook/src/components/navigation/BottomTabsNavigator/BottomTabsNavigator";
-import { NavigationRail } from "@spotify-replay/storybook/src/components/navigation/NavigationRail/NavigationRail";
+import { BottomTabsNavigator } from "@spotify-replay/ui/src/components/navigation/BottomTabsNavigator/BottomTabsNavigator";
+import { NavigationRail } from "@spotify-replay/ui/src/components/navigation/NavigationRail/NavigationRail";
 
 const NavigationContainer = () => {
   const pathname = usePathname();

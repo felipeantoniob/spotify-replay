@@ -2,8 +2,8 @@
 
 import { signIn } from "next-auth/react";
 
-import { Icon } from "@spotify-replay/storybook/src/components/common/Icon/Icon";
-import { Button } from "@spotify-replay/storybook/src/components/ui/Button/Button";
+import { Icon } from "@spotify-replay/ui/src/components/common/Icon/Icon";
+import { Button } from "@spotify-replay/ui/src/components/ui/Button/Button";
 
 const LogInButton = () => {
   return (

@@ -1,4 +1,4 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  transpilePackages: ["@spotify-replay/storybook"],
+  transpilePackages: ["@spotify-replay/ui"],
 };

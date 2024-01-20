@@ -1,10 +1,10 @@
-import { Header } from "@spotify-replay/storybook/src/components/common/Header/Header";
-import { ArtistsCarousel } from "@spotify-replay/storybook/src/components/profile/ArtistsCarousel/ArtistsCarousel";
-import { TracksCarousel } from "@spotify-replay/storybook/src/components/profile/TracksCarousel/TracksCarousel";
+import { Header } from "@spotify-replay/ui/src/components/common/Header/Header";
+import { ArtistsCarousel } from "@spotify-replay/ui/src/components/profile/ArtistsCarousel/ArtistsCarousel";
+import { TracksCarousel } from "@spotify-replay/ui/src/components/profile/TracksCarousel/TracksCarousel";
 import {
   SAMPLE_ARTISTS,
   SAMPLE_TRACKS,
-} from "@spotify-replay/storybook/src/constants/data";
+} from "@spotify-replay/ui/src/constants/data";
 
 import NavigationContainer from "../../components/NavigationContainer";
 

@@ -1,8 +1,8 @@
 "use client";
 
-import { Header } from "@spotify-replay/storybook/src/components/common/Header/Header";
-import { TracksList } from "@spotify-replay/storybook/src/components/tracks/TracksList/TracksList";
-import { SAMPLE_TRACKS } from "@spotify-replay/storybook/src/constants/data";
+import { Header } from "@spotify-replay/ui/src/components/common/Header/Header";
+import { TracksList } from "@spotify-replay/ui/src/components/tracks/TracksList/TracksList";
+import { SAMPLE_TRACKS } from "@spotify-replay/ui/src/constants/data";
 
 import NavigationContainer from "../../components/NavigationContainer";
 
