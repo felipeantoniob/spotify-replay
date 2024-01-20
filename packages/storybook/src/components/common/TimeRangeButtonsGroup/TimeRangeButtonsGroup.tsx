@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useBoundStore } from "@spotify-replay/store";
 
 import { TimeRangeButton } from "../TimeRangeButton/TimeRangeButton";
 
@@ -22,7 +22,8 @@ const TIME_RANGE_OPTIONS = [
 ] as const;
 
 const TimeRangeButtonsGroup = () => {
-  const [timeRange, setTimeRange] = useState<TimeRange>("short_term");
+  const timeRange = useBoundStore((state) => state.timeRange);
+  const setTimeRange = useBoundStore((state) => state.setTimeRange);
 
   return (
     <div className="flex gap-2">

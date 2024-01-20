@@ -1,0 +1,26 @@
+{
+  "name": "@spotify-replay/store",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "files": [
+    "./index.ts"
+  ],
+  "dependencies": {
+    "zustand": "^4.5.0"
+  },
+  "devDependencies": {
+    "@spotify-replay/eslint-config": "workspace:^0.2.0",
+    "@spotify-replay/prettier-config": "workspace:^0.1.0",
+    "@spotify-replay/tsconfig": "workspace:*",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@spotify-replay/eslint-config/base"
+    ]
+  },
+  "prettier": "@spotify-replay/prettier-config"
+}

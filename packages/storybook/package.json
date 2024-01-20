@@ -17,6 +17,7 @@
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
+    "@spotify-replay/store": "workspace:^0.1.0",
     "@spotify/web-api-ts-sdk": "^1.2.0",
     "chart.js": "^4.4.1",
     "class-variance-authority": "^0.7.0",

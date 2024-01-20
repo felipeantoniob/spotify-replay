@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useBoundStore } from "@spotify-replay/store";
 
 import {
   Select,
@@ -16,7 +16,8 @@ type TrackCount = (typeof TRACK_COUNT_OPTIONS)[number];
 type TrackCountString = `${TrackCount}`;
 
 const TrackCountSelector = () => {
-  const [trackCount, setTrackCount] = useState<TrackCount>(50);
+  const trackCount = useBoundStore((state) => state.limit);
+  const setTrackCount = useBoundStore((state) => state.setLimit);
 
   return (
     <Select
@@ -25,7 +26,7 @@ const TrackCountSelector = () => {
         setTrackCount(parseInt(value) as TrackCount)
       }
     >
-      <SelectTrigger className="w-[90px] focus:ring-secondary">
+      <SelectTrigger className="focus:ring-secondary w-[90px]">
         <SelectValue placeholder="Tracks" />
       </SelectTrigger>
       <SelectContent className="min-w-4">
