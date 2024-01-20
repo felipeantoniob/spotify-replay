@@ -1,70 +1,46 @@
-"use client";
+import { Icon } from "@spotify-replay/ui/src/components/common/Icon/Icon";
+import { Button } from "@spotify-replay/ui/src/components/ui/Button/Button";
 
-import type { SearchResults, SpotifyApi } from "@spotify/web-api-ts-sdk";
-import { useEffect, useState } from "react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { auth, signIn, signOut } from "../api/auth/[...nextauth]/route";
+import SpotifySearch from "./SpotifySearch";
 
-import sdk from "../../lib/spotify-sdk/ClientInstance";
+export default async function Home() {
+  const session = await auth();
 
-export default function Home() {
-  const session = useSession();
-
-  if (!session || session.status !== "authenticated") {
+  if (!session?.user) {
     return (
       <div>
         <h1>Spotify Web API Typescript SDK in Next.js</h1>
-        <button onClick={() => signIn("spotify")}>Sign in with Spotify</button>
+        <form
+          action={async () => {
+            "use server";
+            await signIn("spotify", { redirectTo: "/profile" });
+          }}
+        >
+          <Button
+            size="xl"
+            className="mt-8 flex flex-row gap-2 rounded-full bg-black text-sm"
+          >
+            <Icon id="spotify" width="22" height="22" />
+            Log in with Spotify
+          </Button>
+        </form>
       </div>
     );
   }
 
   return (
     <div>
-      <p>Logged in as {session.data.user?.name}</p>
-      <button onClick={() => signOut()}>Sign out</button>
-      <SpotifySearch sdk={sdk} />
+      <p>Logged in as {session.user.name}</p>
+      <form
+        action={async () => {
+          "use server";
+          await signOut();
+        }}
+      >
+        <button>Sign out</button>
+      </form>
+      <SpotifySearch />
     </div>
-  );
-}
-
-function SpotifySearch({ sdk }: { sdk: SpotifyApi }) {
-  const [results, setResults] = useState<SearchResults<["artist"]>>(
-    {} as SearchResults<["artist"]>,
-  );
-
-  useEffect(() => {
-    void (async () => {
-      const results = await sdk.search("The Beatles", ["artist"]);
-      const test = await sdk.currentUser.topItems("artists", "short_term", 50);
-      console.log(test);
-      setResults(() => results);
-    })();
-  }, [sdk]);
-
-  // generate a table for the results
-  const tableRows = results.artists?.items.map((artist) => {
-    return (
-      <tr key={artist.id}>
-        <td>{artist.name}</td>
-        <td>{artist.popularity}</td>
-        <td>{artist.followers.total}</td>
-      </tr>
-    );
-  });
-
-  return (
-    <>
-      <h1>Spotify Search for The Beatles</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Popularity</th>
-            <th>Followers</th>
-          </tr>
-        </thead>
-        <tbody>{tableRows}</tbody>
-      </table>
-    </>
   );
 }

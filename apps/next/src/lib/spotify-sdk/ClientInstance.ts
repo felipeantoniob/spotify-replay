@@ -1,5 +1,3 @@
-"use client";
-
 import type {
   AccessToken,
   IAuthStrategy,
@@ -7,9 +5,9 @@ import type {
   SdkOptions,
 } from "@spotify/web-api-ts-sdk";
 import { SpotifyApi } from "@spotify/web-api-ts-sdk";
-import { getSession, signIn } from "next-auth/react";
 
 import type { AuthUser } from "../../app/api/auth/[...nextauth]/authOptions";
+import { auth, signIn } from "../../app/api/auth/[...nextauth]/route";
 
 /**
  * A class that implements the IAuthStrategy interface and wraps the NextAuth functionality.
@@ -21,7 +19,8 @@ class NextAuthStrategy implements IAuthStrategy {
   }
 
   public async getAccessToken(): Promise<AccessToken> {
-    const session = await getSession();
+    const session = await auth();
+
     if (!session) {
       return {} as AccessToken;
     }

@@ -1,4 +1,4 @@
-import type { AuthOptions, DefaultSession } from "next-auth";
+import type { DefaultSession, NextAuthConfig } from "next-auth";
 
 import spotifyProfile, { refreshAccessToken } from "./SpotifyProfile";
 
@@ -52,7 +52,7 @@ interface SessionToken {
  *
  * @see https://next-auth.js.org/configuration/options
  */
-const authOptions: AuthOptions = {
+const authOptions: NextAuthConfig = {
   providers: [spotifyProfile],
   session: {
     maxAge: 60 * 60, // 1hr

@@ -1,8 +1,5 @@
-import type { JWT } from "next-auth/jwt";
+import type { JWT } from "@auth/core/jwt";
 import SpotifyProvider from "next-auth/providers/spotify";
-
-console.log("AUTH SPOTIFY ID");
-console.log(process.env.AUTH_SPOTIFY_ID);
 
 if (!process.env.AUTH_SPOTIFY_ID) {
   throw new Error("Missing AUTH_SPOTIFY_ID");
