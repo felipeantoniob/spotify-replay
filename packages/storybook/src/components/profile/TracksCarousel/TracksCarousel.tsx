@@ -31,7 +31,7 @@ const TracksCarousel = ({
         <Carousel plugins={[plugin.current]}>
           <CarouselContent>
             {tracks.map((track) => (
-              <CarouselItem className="basis-1/3 md:basis-1/5">
+              <CarouselItem key={track.id} className="basis-1/3 md:basis-1/5">
                 <Image
                   useNextImage={useNextImage}
                   src={track?.album.images[0]?.url ?? ""}

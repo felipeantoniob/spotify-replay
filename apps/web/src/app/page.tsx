@@ -1,7 +1,4 @@
-import Link from "next/link";
-
-import { Icon } from "@spotify-replay/storybook/src/components/common/Icon/Icon";
-import { Button } from "@spotify-replay/storybook/src/components/ui/Button/Button";
+import LogInButton from "../components/LogInButton";
 
 const AppLogo = () => (
   <svg width="200" height="48" viewBox="0 0 200 48">
@@ -95,16 +92,7 @@ export default function Home() {
             <span className="font-bold">Rediscover</span> yourself
           </p>
         </div>
-        <Button
-          size="xl"
-          className="mt-8 rounded-full bg-black text-sm"
-          asChild
-        >
-          <Link href="/api/auth/signin" className="flex flex-row gap-2">
-            <Icon id="spotify" width="22" height="22" />
-            Log in with Spotify
-          </Link>
-        </Button>
+        <LogInButton />
       </div>
     </main>
   );

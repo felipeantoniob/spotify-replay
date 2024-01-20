@@ -31,7 +31,7 @@ const ArtistsCarousel = ({
         <Carousel plugins={[plugin.current]}>
           <CarouselContent>
             {artists.map((artist) => (
-              <CarouselItem className="basis-1/3 md:basis-1/5">
+              <CarouselItem key={artist.id} className="basis-1/3 md:basis-1/5">
                 <Image
                   useNextImage={useNextImage}
                   src={artist.images[0]?.url ?? ""}
