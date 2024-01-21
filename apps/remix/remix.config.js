@@ -5,4 +5,10 @@ export default {
   // assetsBuildDirectory: "public/build",
   // publicPath: "/build/",
   // serverBuildPath: "build/index.js",
+  serverDependenciesToBundle: [
+    "@spotify-replay/tsconfig",
+    "@spotify-replay/tailwind-config",
+    "@spotify-replay/ui/src/components/ui/Button/Button",
+    "@spotify-replay/ui/src/components/common/Icon/Icon",
+  ],
 };
