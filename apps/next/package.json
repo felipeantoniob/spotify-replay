@@ -13,6 +13,7 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^14.1.0",
     "@spotify-replay/api": "workspace:^0.1.0",
     "@spotify-replay/auth": "workspace:^0.1.0",
     "@spotify-replay/store": "workspace:^0.1.0",
