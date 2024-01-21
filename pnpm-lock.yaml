@@ -172,6 +172,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      zustand:
+        specifier: ^4.5.0
+        version: 4.5.0(@types/react@18.2.48)(react@18.2.0)
     devDependencies:
       '@remix-run/dev':
         specifier: ^2.5.1
@@ -182,6 +185,9 @@ importers:
       '@spotify-replay/prettier-config':
         specifier: workspace:^0.1.0
         version: link:../../tooling/prettier
+      '@spotify-replay/store':
+        specifier: workspace:^0.1.0
+        version: link:../../packages/store
       '@spotify-replay/tailwind-config':
         specifier: workspace:^0.1.0
         version: link:../../tooling/tailwind
