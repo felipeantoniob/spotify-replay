@@ -160,6 +160,9 @@ importers:
       '@remix-run/serve':
         specifier: ^2.5.1
         version: 2.5.1(typescript@5.3.3)
+      '@spotify-replay/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       isbot:
         specifier: ^4.1.0
         version: 4.4.0
@@ -215,6 +218,9 @@ importers:
       eslint-plugin-react-hooks:
         specifier: ^4.6.0
         version: 4.6.0(eslint@8.56.0)
+      tailwindcss:
+        specifier: ^3.4.0
+        version: 3.4.1
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
