@@ -1,4 +1,8 @@
-export const AppLogo = () => (
+import type { FC, SVGProps } from "react";
+
+type ReplayLogoProps = SVGProps<SVGSVGElement>;
+
+export const ReplayLogo: FC<ReplayLogoProps> = () => (
   <svg width="200" height="48" viewBox="0 0 200 48">
     <g clipPath="url(#clip0_1_3370)">
       <path

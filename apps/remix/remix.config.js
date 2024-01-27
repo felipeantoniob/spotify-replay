@@ -11,5 +11,6 @@ export default {
     "@spotify-replay/tailwind-config",
     "@spotify-replay/ui/src/components/ui/Button/Button",
     "@spotify-replay/ui/src/components/common/Icon/Icon",
+    "@spotify-replay/ui/src/components/common/ReplayLogo/ReplayLogo",
   ],
 };

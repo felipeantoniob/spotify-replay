@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
 
-import { AppLogo } from "~/components/AppLogo";
+import { ReplayLogo } from "@spotify-replay/ui/src/components/common/ReplayLogo/ReplayLogo";
+
 import LogInButton from "~/components/LogInButton";
 
 export const meta: MetaFunction = () => {
@@ -18,7 +19,7 @@ export default function Index() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-l from-on-primary-container from-5%  to-primary text-white">
       <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-        <AppLogo />
+        <ReplayLogo />
         <div className="text-center font-sans text-lg text-on-primary">
           <p>
             <span className="font-bold">Recap</span> songs
