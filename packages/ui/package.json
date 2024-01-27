@@ -54,7 +54,8 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@spotify-replay/eslint-config/base"
+      "@spotify-replay/eslint-config/base",
+      "@spotify-replay/eslint-config/storybook"
     ]
   },
   "prettier": "@spotify-replay/prettier-config"
