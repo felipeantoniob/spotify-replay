@@ -1,0 +1,94 @@
+diff --git a/dist/index.mjs b/dist/index.mjs
+index f9ce84c3a221c00faeb8e65f64a1b16ad4ce3eff..d99d9d835416b45dd57e963498bb1f7725dff9e7 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -1313,17 +1313,17 @@ function Info(props) {
+     updateSavedStatus
+   } = props;
+   const [isSaved, setIsSaved] = useState3(false);
+-  const isMounted = useRef3(false);
++  const _isMounted = useRef3(false);
+   const previousId = usePrevious(id);
+   const isCompactLayout = layout === "compact";
+   const updateState = (state) => {
+-    if (!isMounted.current) {
++    if (!_isMounted.current) {
+       return;
+     }
+     setIsSaved(state);
+   };
+   const setStatus = async () => {
+-    if (!isMounted.current) {
++    if (!_isMounted.current) {
+       return;
+     }
+     if (updateSavedStatus && id) {
+@@ -1337,12 +1337,12 @@ function Info(props) {
+     onFavoriteStatusChange(isSaved);
+   };
+   useEffect3(() => {
+-    isMounted.current = true;
++    _isMounted.current = true;
+     if (showSaveIcon && id) {
+       setStatus();
+     }
+     return () => {
+-      isMounted.current = false;
++      _isMounted.current = false;
+     };
+   }, []);
+   useEffect3(() => {
+@@ -1937,7 +1937,7 @@ put(".ButtonRSWP", {
+   }
+ });
+ var SpotifyWebPlayer = class extends PureComponent {
+-  isMounted = false;
++  _isMounted = false;
+   emptyTrack = {
+     artists: [],
+     durationMs: 0,
+@@ -2019,7 +2019,7 @@ var SpotifyWebPlayer = class extends PureComponent {
+     syncExternalDevice: false
+   };
+   async componentDidMount() {
+-    this.isMounted = true;
++    this._isMounted = true;
+     const { top = 0 } = this.ref.current?.getBoundingClientRect() ?? {};
+     this.updateState({
+       playerPosition: top > window.innerHeight / 2 ? "bottom" : "top",
+@@ -2131,7 +2131,7 @@ var SpotifyWebPlayer = class extends PureComponent {
+     }
+   }
+   async componentWillUnmount() {
+-    this.isMounted = false;
++    this._isMounted = false;
+     if (this.player) {
+       this.player.disconnect();
+     }
+@@ -2442,7 +2442,7 @@ var SpotifyWebPlayer = class extends PureComponent {
+     this.updateState({ volume });
+   };
+   syncDevice = async () => {
+-    if (!this.isMounted) {
++    if (!this._isMounted) {
+       return;
+     }
+     const { deviceId } = this.state;
+@@ -2580,7 +2580,7 @@ var SpotifyWebPlayer = class extends PureComponent {
+     }
+   };
+   updateSeekBar = async () => {
+-    if (!this.isMounted) {
++    if (!this._isMounted) {
+       return;
+     }
+     const { progressMs, track } = this.state;
+@@ -2610,7 +2610,7 @@ var SpotifyWebPlayer = class extends PureComponent {
+     }
+   };
+   updateState = (state) => {
+-    if (!this.isMounted) {
++    if (!this._isMounted) {
+       return;
+     }
+     this.setState(state);

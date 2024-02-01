@@ -6,6 +6,9 @@ import { cache } from "react";
 import { Inter } from "next/font/google";
 import { headers } from "next/headers";
 
+import { auth } from "@spotify-replay/auth";
+
+import AuthSessionProvider from "../components/AuthSessionProvider";
 import { TRPCReactProvider } from "../trpc/react";
 
 const inter = Inter({
@@ -27,12 +30,15 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
+  const session = await auth();
   return (
     <html lang="en">
       <body className={`${inter.className} bg-primary`}>
-        <TRPCReactProvider headersPromise={getHeaders()}>
-          {children}
-        </TRPCReactProvider>
+        <AuthSessionProvider session={session}>
+          <TRPCReactProvider headersPromise={getHeaders()}>
+            {children}
+          </TRPCReactProvider>
+        </AuthSessionProvider>
       </body>
     </html>
   );

@@ -88,7 +88,7 @@ const FloatingActionButtonContainer = () => {
 
   return (
     <>
-      <div className="fixed bottom-4 right-4">
+      <div>
         <FloatingActionButton
           isDisabled={false}
           isExpanded={isButtonExpanded}

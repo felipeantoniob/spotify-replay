@@ -6,7 +6,6 @@ import { useBoundStore } from "@spotify-replay/store";
 import { Header } from "@spotify-replay/ui/src/components/common/Header/Header";
 import { TracksList } from "@spotify-replay/ui/src/components/tracks/TracksList/TracksList";
 
-import FloatingActionButtonContainer from "../../components/FloatingActionButtonContainer";
 import NavigationContainer from "../../components/NavigationContainer";
 import { api } from "../../trpc/react";
 
@@ -39,7 +38,6 @@ function Tracks() {
           limit={limit}
         />
       </main>
-      <FloatingActionButtonContainer />
       <NavigationContainer />
     </>
   );
