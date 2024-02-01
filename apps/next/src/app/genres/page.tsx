@@ -4,7 +4,6 @@ import { useBoundStore } from "@spotify-replay/store";
 import { Header } from "@spotify-replay/ui/src/components/common/Header/Header";
 import { GenrePieChart } from "@spotify-replay/ui/src/components/genres/GenrePieChart/GenrePieChart";
 
-import NavigationContainer from "../../components/NavigationContainer";
 import { api } from "../../trpc/react";
 
 function Genres() {
@@ -28,7 +27,6 @@ function Genres() {
           </div>
         </div>
       </main>
-      <NavigationContainer />
     </>
   );
 }

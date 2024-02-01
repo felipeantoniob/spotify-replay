@@ -6,7 +6,6 @@ import { useBoundStore } from "@spotify-replay/store";
 import { ArtistsGrid } from "@spotify-replay/ui/src/components/artists/ArtistsGrid/ArtistsGrid";
 import { Header } from "@spotify-replay/ui/src/components/common/Header/Header";
 
-import NavigationContainer from "../../components/NavigationContainer";
 import { api } from "../../trpc/react";
 
 function Artists() {
@@ -51,7 +50,6 @@ function Artists() {
           useNextImage
         />
       </main>
-      <NavigationContainer />
     </>
   );
 }

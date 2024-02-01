@@ -9,6 +9,7 @@ import { headers } from "next/headers";
 import { auth } from "@spotify-replay/auth";
 
 import AuthSessionProvider from "../components/AuthSessionProvider";
+import NavigationContainer from "../components/NavigationContainer";
 import { TRPCReactProvider } from "../trpc/react";
 
 const inter = Inter({
@@ -37,6 +38,7 @@ export default async function RootLayout({
         <AuthSessionProvider session={session}>
           <TRPCReactProvider headersPromise={getHeaders()}>
             {children}
+            <NavigationContainer />
           </TRPCReactProvider>
         </AuthSessionProvider>
       </body>

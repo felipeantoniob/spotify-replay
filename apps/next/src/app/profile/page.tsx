@@ -6,7 +6,6 @@ import { ArtistsCarouselSkeleton } from "@spotify-replay/ui/src/components/profi
 import { TracksCarousel } from "@spotify-replay/ui/src/components/profile/TracksCarousel/TracksCarousel";
 import { TracksCarouselSkeleton } from "@spotify-replay/ui/src/components/profile/TracksCarouselSkeleton/TracksCarouselSkeleton";
 
-import NavigationContainer from "../../components/NavigationContainer";
 import { api } from "../../trpc/react";
 
 const NUMBER_OF_CAROUSEL_ITEMS = 20;
@@ -40,7 +39,6 @@ function Profile() {
           <ArtistsCarouselSkeleton />
         )}
       </main>
-      <NavigationContainer />
     </>
   );
 }

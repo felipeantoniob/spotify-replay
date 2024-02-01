@@ -9,6 +9,8 @@ import { NavigationRail } from "@spotify-replay/ui/src/components/navigation/Nav
 import FloatingActionButtonContainer from "./FloatingActionButtonContainer";
 import Player from "./Player";
 
+const ROUTES_WITH_FAB = ["/artists", "/tracks"];
+
 const NavigationContainer = () => {
   const pathname = usePathname();
 
@@ -20,7 +22,7 @@ const NavigationContainer = () => {
       <div className="flex md:hidden">
         <BottomTabsNavigator pathname={pathname} />
       </div>
-      <FloatingActionButtonContainer />
+      {ROUTES_WITH_FAB.includes(pathname) && <FloatingActionButtonContainer />}
       <Player />
     </div>
   );
