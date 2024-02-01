@@ -13,10 +13,10 @@ function Artists() {
   const timeRange = useBoundStore((state) => state.timeRange);
   const setTracksUriArray = useBoundStore((state) => state.setTracksUriArray);
   const limit = useBoundStore((state) => state.limit);
-  const topArtists = api.spotify.getUserTopArtists.useQuery({
-    timeRange,
-    limit,
-  });
+  const topArtists = api.spotify.getUserTopArtists.useQuery(
+    { timeRange, limit },
+    { refetchOnWindowFocus: false },
+  );
   const topArtistsTopTracks = api.spotify.getMultipleArtistsTopTracks.useQuery(
     {
       artistsIdArray: topArtists.data?.map((artist) => artist.id) ?? [""],
@@ -38,7 +38,7 @@ function Artists() {
 
   return (
     <>
-      <main className="pb-40 md:pl-20">
+      <main className="pb-44 md:pl-20">
         <Header
           title="Your Top Artists"
           isTimeRangeButtonsGroupVisible={true}

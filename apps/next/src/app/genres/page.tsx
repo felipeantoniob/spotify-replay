@@ -9,10 +9,10 @@ import { api } from "../../trpc/react";
 
 function Genres() {
   const timeRange = useBoundStore((state) => state.timeRange);
-  const topArtists = api.spotify.getUserTopArtists.useQuery({
-    timeRange,
-    limit: 50,
-  });
+  const topArtists = api.spotify.getUserTopArtists.useQuery(
+    { timeRange, limit: 50 },
+    { refetchOnWindowFocus: false },
+  );
   const genreData = api.spotify.getGenreData.useQuery({ timeRange });
 
   return (

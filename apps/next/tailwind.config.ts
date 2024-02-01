@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 import baseConfig from "@spotify-replay/tailwind-config";
 
@@ -9,5 +10,9 @@ export default {
   presets: [baseConfig],
   theme: {
     extend: {},
+    screens: {
+      xs: "475px",
+      ...defaultTheme.screens,
+    },
   },
 } satisfies Config;

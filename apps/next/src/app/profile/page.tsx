@@ -24,7 +24,7 @@ function Profile() {
 
   return (
     <>
-      <main className="pb-40 md:pl-20">
+      <main className="pb-44 md:pl-20">
         <Header
           title={`Welcome to your replay${userInfo.data?.display_name ? `, ${userInfo.data.display_name}!` : ""}`}
         />

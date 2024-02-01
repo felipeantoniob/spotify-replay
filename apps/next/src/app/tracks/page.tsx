@@ -13,10 +13,10 @@ function Tracks() {
   const timeRange = useBoundStore((state) => state.timeRange);
   const limit = useBoundStore((state) => state.limit);
   const setTracksUriArray = useBoundStore((state) => state.setTracksUriArray);
-  const topTracks = api.spotify.getUserTopTracks.useQuery({
-    timeRange,
-    limit,
-  });
+  const topTracks = api.spotify.getUserTopTracks.useQuery(
+    { timeRange, limit },
+    { refetchOnWindowFocus: false },
+  );
 
   useEffect(() => {
     if (topTracks.isSuccess) {
@@ -26,7 +26,7 @@ function Tracks() {
 
   return (
     <>
-      <main className="pb-40 md:pl-20">
+      <main className="pb-44 md:pl-20">
         <Header
           title="Your Top Tracks"
           isTimeRangeButtonsGroupVisible={true}

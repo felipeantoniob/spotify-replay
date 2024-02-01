@@ -1,5 +1,8 @@
 import type { Track as TrackType } from "@spotify/web-api-ts-sdk";
-import { PlayIcon } from "lucide-react";
+import { AudioLines, PlayIcon } from "lucide-react";
+import { twMerge } from "tailwind-merge";
+
+import { useBoundStore } from "@spotify-replay/store";
 
 import { Image } from "../../ui/Image/Image";
 
@@ -20,18 +23,56 @@ const Track = ({
   track,
   useNextImage,
 }: TrackProps) => {
+  const uri = useBoundStore((state) => state.uri);
+  const setUri = useBoundStore((state) => state.setUri);
+  const isPlaying = useBoundStore((state) => state.isPlaying);
+  const setIsPlaying = useBoundStore((state) => state.setIsPlaying);
+
+  const isTrackSelected = uri === track.id;
+
+  function handlePlay() {
+    setUri(track.id);
+    setIsPlaying(true);
+  }
+
   return (
-    <div className="group flex flex-row rounded-md text-on-primary transition-all duration-75 hover:bg-on-primary-container/25">
+    <div
+      className={twMerge(
+        "group flex flex-row rounded-md text-on-primary transition-all duration-75 hover:bg-on-primary-container/25",
+        isTrackSelected &&
+          "bg-on-primary-container hover:bg-on-primary-container",
+      )}
+    >
       {showIndex && (
-        <button className="flex h-full w-10 cursor-pointer items-center justify-center self-center ">
-          <div className="text-sm group-hover:hidden">{index}</div>
-          <PlayIcon
-            fill="white"
-            stroke="white"
-            width={16}
-            height={16}
-            className="hidden group-hover:block"
-          />
+        <button
+          onClick={handlePlay}
+          className="flex h-full w-10 cursor-pointer items-center justify-center self-center"
+        >
+          {isTrackSelected ? (
+            <>
+              {isPlaying ? (
+                <AudioLines
+                  fill="white"
+                  stroke="white"
+                  width={16}
+                  height={16}
+                />
+              ) : (
+                <PlayIcon fill="white" stroke="white" width={16} height={16} />
+              )}
+            </>
+          ) : (
+            <>
+              <div className="text-sm group-hover:hidden">{index}</div>
+              <PlayIcon
+                fill="white"
+                stroke="white"
+                width={16}
+                height={16}
+                className="hidden group-hover:block"
+              />
+            </>
+          )}
         </button>
       )}
       <div className="flex flex-1 flex-row overflow-hidden transition-all">
