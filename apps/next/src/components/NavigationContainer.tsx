@@ -14,6 +14,8 @@ const ROUTES_WITH_FAB = ["/artists", "/tracks"];
 const NavigationContainer = () => {
   const pathname = usePathname();
 
+  if (pathname === "/") return null;
+
   return (
     <div className="fixed inset-x-0 bottom-0">
       <div className="hidden md:flex">
