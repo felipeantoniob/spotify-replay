@@ -51,8 +51,8 @@ const getButtonText = (pathname: string) => {
 
 const FloatingActionButtonContainer = () => {
   const pathname = usePathname();
-  const tracksUriArray = useBoundStore((state) => state.tracksUriArray);
-  const timeRange = useBoundStore((state) => state.timeRange);
+  const tracksUriArray = useBoundStore.use.tracksUriArray();
+  const timeRange = useBoundStore.use.timeRange();
   const [playlistId, setPlaylistId] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const playlistQuery = api.spotify.getPlaylist.useQuery(

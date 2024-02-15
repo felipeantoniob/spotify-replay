@@ -9,9 +9,9 @@ import { Header } from "@spotify-replay/ui/src/components/common/Header/Header";
 import { api } from "../../trpc/react";
 
 function Artists() {
-  const timeRange = useBoundStore((state) => state.timeRange);
-  const setTracksUriArray = useBoundStore((state) => state.setTracksUriArray);
-  const limit = useBoundStore((state) => state.limit);
+  const timeRange = useBoundStore.use.timeRange();
+  const setTracksUriArray = useBoundStore.use.setTracksUriArray();
+  const limit = useBoundStore.use.limit();
   const topArtists = api.spotify.getUserTopArtists.useQuery(
     { timeRange, limit },
     { refetchOnWindowFocus: false },

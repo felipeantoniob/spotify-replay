@@ -23,10 +23,10 @@ const Track = ({
   track,
   useNextImage,
 }: TrackProps) => {
-  const uri = useBoundStore((state) => state.uri);
-  const setUri = useBoundStore((state) => state.setUri);
-  const isPlaying = useBoundStore((state) => state.isPlaying);
-  const setIsPlaying = useBoundStore((state) => state.setIsPlaying);
+  const uri = useBoundStore.use.uri();
+  const setUri = useBoundStore.use.setUri();
+  const isPlaying = useBoundStore.use.isPlaying();
+  const setIsPlaying = useBoundStore.use.setIsPlaying();
 
   const isTrackSelected = uri === track.id;
 

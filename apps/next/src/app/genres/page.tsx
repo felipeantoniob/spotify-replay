@@ -7,7 +7,7 @@ import { GenrePieChart } from "@spotify-replay/ui/src/components/genres/GenrePie
 import { api } from "../../trpc/react";
 
 function Genres() {
-  const timeRange = useBoundStore((state) => state.timeRange);
+  const timeRange = useBoundStore.use.timeRange();
   const topArtists = api.spotify.getUserTopArtists.useQuery(
     { timeRange, limit: 50 },
     { refetchOnWindowFocus: false },

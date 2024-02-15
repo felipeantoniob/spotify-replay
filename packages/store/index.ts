@@ -1,6 +1,8 @@
 import type { StateCreator } from "zustand";
 import { create } from "zustand";
 
+import { createSelectors } from "./createSelectors";
+
 interface PlaybackSlice {
   uri: string;
   setUri: (uri: string) => void;
@@ -68,7 +70,7 @@ const createLimitSlice: StateCreator<LimitSlice, [], [], LimitSlice> = (
   setLimit: (limit) => set({ limit }),
 });
 
-export const useBoundStore = create<
+export const useBoundStoreBase = create<
   PlaybackSlice & PlaylistSlice & TimeRangeSlice & LimitSlice
 >()((...a) => ({
   ...createPlaybackSlice(...a),
@@ -76,3 +78,5 @@ export const useBoundStore = create<
   ...createTimeRangeSlice(...a),
   ...createLimitSlice(...a),
 }));
+
+export const useBoundStore = createSelectors(useBoundStoreBase);

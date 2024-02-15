@@ -18,9 +18,9 @@ const PlayerStyles: Partial<StylesOptions> = {
 
 const Player = () => {
   const { data: session } = useSession();
-  const uri = useBoundStore((state) => state.uri);
-  const isPlaying = useBoundStore((state) => state.isPlaying);
-  const setIsPlaying = useBoundStore((state) => state.setIsPlaying);
+  const uri = useBoundStore.use.uri();
+  const isPlaying = useBoundStore.use.isPlaying();
+  const setIsPlaying = useBoundStore.use.setIsPlaying();
 
   const accessToken = session?.user.access_token ?? null;
 

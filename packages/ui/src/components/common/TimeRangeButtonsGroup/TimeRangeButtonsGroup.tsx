@@ -22,8 +22,8 @@ const TIME_RANGE_OPTIONS = [
 ] as const;
 
 const TimeRangeButtonsGroup = () => {
-  const timeRange = useBoundStore((state) => state.timeRange);
-  const setTimeRange = useBoundStore((state) => state.setTimeRange);
+  const timeRange = useBoundStore.use.timeRange();
+  const setTimeRange = useBoundStore.use.setTimeRange();
 
   return (
     <div className="flex gap-2">

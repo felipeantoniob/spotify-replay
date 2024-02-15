@@ -29,8 +29,8 @@ const Content = () => (
 );
 
 const TrackCountSelector = () => {
-  const trackCount = useBoundStore((state) => state.limit);
-  const setTrackCount = useBoundStore((state) => state.setLimit);
+  const trackCount = useBoundStore.use.limit();
+  const setTrackCount = useBoundStore.use.setLimit();
 
   function handleValueChange(value: TrackCountString) {
     setTrackCount(parseInt(value) as TrackCount);

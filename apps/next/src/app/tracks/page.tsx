@@ -9,9 +9,9 @@ import { TracksList } from "@spotify-replay/ui/src/components/tracks/TracksList/
 import { api } from "../../trpc/react";
 
 function Tracks() {
-  const timeRange = useBoundStore((state) => state.timeRange);
-  const limit = useBoundStore((state) => state.limit);
-  const setTracksUriArray = useBoundStore((state) => state.setTracksUriArray);
+  const timeRange = useBoundStore.use.timeRange();
+  const limit = useBoundStore.use.limit();
+  const setTracksUriArray = useBoundStore.use.setTracksUriArray();
   const topTracks = api.spotify.getUserTopTracks.useQuery(
     { timeRange, limit },
     { refetchOnWindowFocus: false },
