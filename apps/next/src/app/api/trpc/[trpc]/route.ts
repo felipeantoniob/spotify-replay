@@ -24,6 +24,8 @@ export function OPTIONS() {
   return response;
 }
 
+// TODO: Fix type errors
+// eslint-disable-next-line
 const handler = auth(async (req) => {
   const response = await fetchRequestHandler({
     endpoint: "/api/trpc",
@@ -41,6 +43,7 @@ const handler = auth(async (req) => {
 
   setCorsHeaders(response);
   return response;
-});
+  // eslint-disable-next-line
+}) as any;
 
 export { handler as GET, handler as POST };

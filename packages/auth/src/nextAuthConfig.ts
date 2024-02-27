@@ -82,7 +82,9 @@ const nextAuthConfig: NextAuthConfig = {
         refresh_token: sessionToken.refresh_token,
         scope: sessionToken.scope,
         id: sessionToken.id,
+        emailVerified: null,
       };
+
       session.user = user;
       session.error = sessionToken.error;
       return session;

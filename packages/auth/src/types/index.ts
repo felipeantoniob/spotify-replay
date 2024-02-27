@@ -9,4 +9,5 @@ export interface AuthUser {
   refresh_token: string;
   scope: string;
   id: string;
+  emailVerified: null;
 }
