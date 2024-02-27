@@ -1,6 +1,12 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "globalDependencies": ["**/.env"],
+  "globalEnv": [
+    "NEXTAUTH_URL",
+    "NEXTAUTH_SECRET",
+    "AUTH_SPOTIFY_ID",
+    "AUTH_SPOTIFY_SECRET"
+  ],
   "pipeline": {
     "topo": {
       "dependsOn": ["^topo"]
