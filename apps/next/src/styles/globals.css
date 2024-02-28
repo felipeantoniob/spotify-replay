@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #250059 #fffbff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 20px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #fffbff;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #250059;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #250059;
+  }
+}
