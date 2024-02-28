@@ -25,7 +25,7 @@ function Tracks() {
 
   return (
     <>
-      <main className="pb-44 md:pl-20">
+      <main className="mx-auto max-w-7xl pb-44 md:pl-20">
         <Header
           title="Your Top Tracks"
           isTimeRangeButtonsGroupVisible={true}

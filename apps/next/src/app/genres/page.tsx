@@ -16,7 +16,7 @@ function Genres() {
 
   return (
     <>
-      <main className="md:pl-20">
+      <main className="mx-auto max-w-7xl md:pl-20">
         <Header title="Your Top Genres" isTimeRangeButtonsGroupVisible />
         <div className="flex h-screen justify-center pb-16">
           <div className="w-full md:w-3/4 lg:w-1/2">
