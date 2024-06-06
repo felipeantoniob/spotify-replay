@@ -10,11 +10,14 @@ const config: StorybookConfig = {
     "../src/components/**/*.stories.ts",
     "../src/components/**/*.stories.tsx",
   ],
+
   addons: [
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-essentials"),
     getAbsolutePath("@storybook/addon-docs"),
+    "@chromatic-com/storybook",
   ],
+
   framework: {
     name: "@storybook/react-vite",
     options: {},
@@ -37,8 +40,10 @@ const config: StorybookConfig = {
     };
   },
 
-  docs: {
-    autodocs: true,
+  docs: {},
+
+  typescript: {
+    reactDocgen: "react-docgen-typescript",
   },
 };
 
