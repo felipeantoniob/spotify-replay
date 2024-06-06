@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import { cache } from "react";
 import { Inter } from "next/font/google";
 import { headers } from "next/headers";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { auth } from "@spotify-replay/auth";
 
@@ -38,6 +39,7 @@ export default async function RootLayout({
         <AuthSessionProvider session={session}>
           <TRPCReactProvider headersPromise={getHeaders()}>
             {children}
+            <SpeedInsights />
             <NavigationContainer />
           </TRPCReactProvider>
         </AuthSessionProvider>
