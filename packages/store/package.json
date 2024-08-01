@@ -7,14 +7,14 @@
     "./index.ts"
   ],
   "dependencies": {
-    "zustand": "^4.5.0"
+    "zustand": "catalog:"
   },
   "devDependencies": {
     "@spotify-replay/eslint-config": "workspace:^0.2.0",
     "@spotify-replay/prettier-config": "workspace:^0.1.0",
     "@spotify-replay/tsconfig": "workspace:*",
-    "eslint": "^8.56.0",
-    "typescript": "^5.3.3"
+    "eslint": "catalog:",
+    "typescript": "catalog:"
   },
   "eslintConfig": {
     "root": true,

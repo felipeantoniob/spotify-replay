@@ -17,17 +17,17 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@t3-oss/env-nextjs": "^0.7.1",
-    "next": "^14.2.3",
-    "next-auth": "5.0.0-beta.19",
-    "zod": "^3.22.4"
+    "@t3-oss/env-nextjs": "^0.11.1",
+    "next": "^15.1.2",
+    "next-auth": "5.0.0-beta.25",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@spotify-replay/eslint-config": "workspace:^0.2.0",
     "@spotify-replay/prettier-config": "workspace:^0.1.0",
     "@spotify-replay/tsconfig": "workspace:*",
-    "eslint": "^8.56.0",
-    "typescript": "^5.3.3"
+    "eslint": "catalog:",
+    "typescript": "catalog:"
   },
   "eslintConfig": {
     "root": true,
