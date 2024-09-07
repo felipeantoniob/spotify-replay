@@ -18,11 +18,11 @@
     "@next/eslint-plugin-next": "^14.2.3",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
-    "eslint-plugin-mdx": "^2.3.2",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-turbo": "^2.0.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-mdx": "^2.3.2",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
@@ -33,8 +33,8 @@
     "@spotify-replay/tsconfig": "workspace:^0.1.0",
     "@types/eslint": "^8.56.0",
     "eslint": "^8.56.0",
-    "prettier": "^3.1.1",
-    "typescript": "^5.3.3"
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
   },
   "eslintConfig": {
     "root": true,

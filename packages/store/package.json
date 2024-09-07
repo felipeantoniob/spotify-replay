@@ -14,7 +14,7 @@
     "@spotify-replay/prettier-config": "workspace:^0.1.0",
     "@spotify-replay/tsconfig": "workspace:*",
     "eslint": "^8.56.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.5.4"
   },
   "eslintConfig": {
     "root": true,
