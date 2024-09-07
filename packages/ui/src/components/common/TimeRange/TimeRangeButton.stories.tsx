@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { TIME_RANGE_OPTIONS } from "./constants";
 import { TimeRangeButton } from "./TimeRangeButton";
 
 const meta = {
@@ -17,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     isSelected: true,
-    onClick: () => null,
-    children: "All Time",
+    timeRangeOption: TIME_RANGE_OPTIONS[0],
+    setTimeRange: () => null,
   },
 };

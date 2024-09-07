@@ -1,6 +1,6 @@
 "use client";
 
-import { Header } from "@spotify-replay/ui/src/components/common/Header/Header";
+import Header from "@spotify-replay/ui/src/components/common/Header/Header";
 import { ArtistsCarousel } from "@spotify-replay/ui/src/components/profile/ArtistsCarousel/ArtistsCarousel";
 import { ArtistsCarouselSkeleton } from "@spotify-replay/ui/src/components/profile/ArtistsCarouselSkeleton/ArtistsCarouselSkeleton";
 import { TracksCarousel } from "@spotify-replay/ui/src/components/profile/TracksCarousel/TracksCarousel";

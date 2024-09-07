@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 import { useBoundStore } from "@spotify-replay/store";
 import { ArtistsGrid } from "@spotify-replay/ui/src/components/artists/ArtistsGrid/ArtistsGrid";
-import { Header } from "@spotify-replay/ui/src/components/common/Header/Header";
+import Header from "@spotify-replay/ui/src/components/common/Header/Header";
 
 import { api } from "../../trpc/react";
 

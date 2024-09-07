@@ -1,7 +1,7 @@
 "use client";
 
 import { useBoundStore } from "@spotify-replay/store";
-import { Header } from "@spotify-replay/ui/src/components/common/Header/Header";
+import Header from "@spotify-replay/ui/src/components/common/Header/Header";
 import { GenrePieChart } from "@spotify-replay/ui/src/components/genres/GenrePieChart/GenrePieChart";
 
 import { api } from "../../trpc/react";

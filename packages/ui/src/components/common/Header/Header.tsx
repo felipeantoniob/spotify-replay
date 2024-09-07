@@ -1,5 +1,7 @@
+import { useBoundStore } from "@spotify-replay/store";
+
 import { Icon } from "../Icon/Icon";
-import { TimeRangeButtonsGroup } from "../TimeRangeButtonsGroup/TimeRangeButtonsGroup";
+import { TimeRangeButtonsGroup } from "../TimeRange/TimeRangeButtonsGroup";
 import { TrackCountSelector } from "../TrackCountSelector/TrackCountSelector";
 
 interface HeaderProps {
@@ -13,12 +15,20 @@ const Header = ({
   isTrackCountSelectorVisible,
   title,
 }: HeaderProps) => {
+  const timeRange = useBoundStore.use.timeRange();
+  const setTimeRange = useBoundStore.use.setTimeRange();
+
   return (
     <div className="items-left mx-4 mb-8 flex flex-col justify-between pt-8">
       <Icon id="replay" width="70" height="24" />
       <h1 className="mt-4 font-sans text-lg font-bold text-white">{title}</h1>
       <div className="mt-4 flex flex-row items-center">
-        {isTimeRangeButtonsGroupVisible && <TimeRangeButtonsGroup />}
+        {isTimeRangeButtonsGroupVisible && (
+          <TimeRangeButtonsGroup
+            selectedTimeRange={timeRange}
+            setTimeRange={setTimeRange}
+          />
+        )}
         {isTrackCountSelectorVisible && (
           <div className="ml-auto">
             <TrackCountSelector />
@@ -29,4 +39,4 @@ const Header = ({
   );
 };
 
-export { Header };
+export default Header;
