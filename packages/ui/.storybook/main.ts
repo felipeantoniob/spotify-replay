@@ -15,11 +15,11 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-essentials"),
     getAbsolutePath("@storybook/addon-docs"),
-    "@chromatic-com/storybook",
+    getAbsolutePath("@chromatic-com/storybook"),
   ],
 
   framework: {
-    name: "@storybook/react-vite",
+    name: getAbsolutePath("@storybook/react-vite"),
     options: {},
   },
 
@@ -29,14 +29,6 @@ const config: StorybookConfig = {
     return {
       ...config,
       define: { "process.env": {} },
-      resolve: {
-        alias: [
-          {
-            find: "storybook",
-            replacement: resolve(__dirname, "../../../packages/storybook"),
-          },
-        ],
-      },
     };
   },
 
