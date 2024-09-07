@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  react-spotify-web-playback@0.14.3:
-    hash: egabdcxa4qiqgoup2vmilzbfly
-    path: patches/react-spotify-web-playback@0.14.3.patch
-
 importers:
 
   .:
@@ -123,8 +118,8 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       react-spotify-web-playback:
-        specifier: ^0.14.1
-        version: 0.14.3(patch_hash=egabdcxa4qiqgoup2vmilzbfly)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: ^0.14.4
+        version: 0.14.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
     devDependencies:
       '@next/eslint-plugin-next':
         specifier: ^14.2.3
@@ -5928,8 +5923,8 @@ packages:
     peerDependencies:
       react: '>=16.8'
 
-  react-spotify-web-playback@0.14.3:
-    resolution: {integrity: sha512-AfQr2j6WjaMpTaevDMXwnEVqpixyEJTzktnvSnz38KCugwuc+YQJxXNUdj7Xa1Jv/JGi1LXSSkTweUjPjavM8g==}
+  react-spotify-web-playback@0.14.4:
+    resolution: {integrity: sha512-68k0drCyf8tryzi22MOa7PHYYLGhEwGMKPLuQ9XpcWYKaAgiAOqejkgEGxHk1mRMKgC6kg0Ho3Ce+8fHRu+Q7Q==}
     peerDependencies:
       react: 17 - 18
 
@@ -13410,7 +13405,7 @@ snapshots:
       '@remix-run/router': 1.14.2
       react: 18.2.0
 
-  react-spotify-web-playback@0.14.3(patch_hash=egabdcxa4qiqgoup2vmilzbfly)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  react-spotify-web-playback@0.14.4(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       '@gilbarbara/deep-equal': 0.3.1
       '@gilbarbara/react-range-slider': 0.7.0(react@18.2.0)
