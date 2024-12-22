@@ -43,7 +43,7 @@
     "eslint": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:",
-    "zustand": "^4.5.0"
+    "zustand": "catalog:"
   },
   "eslintConfig": {
     "root": true,

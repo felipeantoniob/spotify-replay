@@ -7,7 +7,7 @@
     "./index.ts"
   ],
   "dependencies": {
-    "zustand": "^4.5.0"
+    "zustand": "catalog:"
   },
   "devDependencies": {
     "@spotify-replay/eslint-config": "workspace:^0.2.0",
