@@ -21,8 +21,8 @@
   },
   "devDependencies": {
     "@spotify-replay/prettier-config": "workspace:^",
-    "husky": "^9.1.5",
-    "lint-staged": "^15.2.10",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
     "prettier": "catalog:",
     "turbo": "^2.3.3",
     "typescript": "catalog:"
