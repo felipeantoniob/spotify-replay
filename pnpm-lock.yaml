@@ -18,6 +18,9 @@ catalogs:
     typescript:
       specifier: ^5.7.2
       version: 5.7.2
+    zod:
+      specifier: ^3.24.1
+      version: 3.24.1
     zustand:
       specifier: ^5.0.2
       version: 5.0.2
@@ -276,8 +279,8 @@ importers:
         specifier: 2.2.2
         version: 2.2.2
       zod:
-        specifier: ^3.22.4
-        version: 3.22.4
+        specifier: 'catalog:'
+        version: 3.24.1
     devDependencies:
       '@spotify-replay/eslint-config':
         specifier: workspace:^0.2.0
@@ -302,7 +305,7 @@ importers:
     dependencies:
       '@t3-oss/env-nextjs':
         specifier: ^0.7.1
-        version: 0.7.3(typescript@5.7.2)(zod@3.22.4)
+        version: 0.7.3(typescript@5.7.2)(zod@3.24.1)
       next:
         specifier: ^14.2.8
         version: 14.2.8(@babel/core@7.24.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -310,8 +313,8 @@ importers:
         specifier: 5.0.0-beta.20
         version: 5.0.0-beta.20(next@14.2.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)
       zod:
-        specifier: ^3.22.4
-        version: 3.22.4
+        specifier: 'catalog:'
+        version: 3.24.1
     devDependencies:
       '@spotify-replay/eslint-config':
         specifier: workspace:^0.2.0
@@ -6776,8 +6779,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  zod@3.22.4:
-    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+  zod@3.24.1:
+    resolution: {integrity: sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==}
 
   zustand@5.0.2:
     resolution: {integrity: sha512-8qNdnJVJlHlrKXi50LDqqUNmUbuBjoKLrYQBnoChIbVph7vni+sY+YpvdjXG9YLd/Bxr6scMcR+rm5H3aSqPaw==}
@@ -9080,16 +9083,16 @@ snapshots:
       '@swc/counter': 0.1.3
       tslib: 2.6.2
 
-  '@t3-oss/env-core@0.7.3(typescript@5.7.2)(zod@3.22.4)':
+  '@t3-oss/env-core@0.7.3(typescript@5.7.2)(zod@3.24.1)':
     dependencies:
-      zod: 3.22.4
+      zod: 3.24.1
     optionalDependencies:
       typescript: 5.7.2
 
-  '@t3-oss/env-nextjs@0.7.3(typescript@5.7.2)(zod@3.22.4)':
+  '@t3-oss/env-nextjs@0.7.3(typescript@5.7.2)(zod@3.24.1)':
     dependencies:
-      '@t3-oss/env-core': 0.7.3(typescript@5.7.2)(zod@3.22.4)
-      zod: 3.22.4
+      '@t3-oss/env-core': 0.7.3(typescript@5.7.2)(zod@3.24.1)
+      zod: 3.24.1
     optionalDependencies:
       typescript: 5.7.2
 
@@ -14060,7 +14063,7 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod@3.22.4: {}
+  zod@3.24.1: {}
 
   zustand@5.0.2(@types/react@18.2.48)(react@18.2.0)(use-sync-external-store@1.2.0(react@18.2.0)):
     optionalDependencies:
