@@ -1,7 +1,6 @@
 import "../styles/globals.css";
 
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
 import { cache } from "react";
 import { Inter } from "next/font/google";
 import { headers } from "next/headers";
@@ -25,12 +24,12 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.png" }],
 };
 
-const getHeaders = cache(async () => headers());
+const getHeaders = cache(async () => await headers());
 
 export default async function RootLayout({
   children,
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
 }) {
   const session = await auth();
   return (

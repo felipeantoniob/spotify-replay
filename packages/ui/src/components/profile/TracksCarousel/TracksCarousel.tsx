@@ -34,7 +34,7 @@ const TracksCarousel = ({
               <CarouselItem key={track.id} className="basis-1/3 md:basis-1/5">
                 <Image
                   useNextImage={useNextImage}
-                  src={track?.album.images[0]?.url ?? ""}
+                  src={track?.album.images[0]?.url}
                   alt={track.album.name}
                   width={320}
                   height={320}

@@ -23,7 +23,7 @@ const Artist = ({ artist, useNextImage = false }: ArtistProps) => {
     <>
       <div className="mb-12 flex flex-col items-center gap-4 text-center">
         <Image
-          src={artist.images[0]?.url ?? ""}
+          src={artist.images[0]?.url}
           useNextImage={useNextImage}
           {...defaultProps}
         />

@@ -78,14 +78,12 @@ const Track = ({
       <div className="flex flex-1 flex-row overflow-hidden transition-all">
         <div className="flex shrink-0">
           <Image
-            src={track.album.images[0]?.url ?? ""}
+            src={track.album.images[0]?.url}
             useNextImage={useNextImage}
             alt="album cover"
             height={80}
             width={80}
           />
-
-          <img src="" />
         </div>
         <div className="flex flex-1 flex-col justify-center gap-1 truncate px-4">
           <div className="flex flex-row items-center">

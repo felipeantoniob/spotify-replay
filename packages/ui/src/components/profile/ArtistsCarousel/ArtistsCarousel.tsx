@@ -34,7 +34,7 @@ const ArtistsCarousel = ({
               <CarouselItem key={artist.id} className="basis-1/3 md:basis-1/5">
                 <Image
                   useNextImage={useNextImage}
-                  src={artist.images[0]?.url ?? ""}
+                  src={artist.images[0]?.url}
                   alt={artist.name}
                   width={320}
                   height={320}
