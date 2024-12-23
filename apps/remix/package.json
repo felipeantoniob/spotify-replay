@@ -8,8 +8,7 @@
     "dev": "remix dev --manual",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
-    "start": "remix-serve ./build/index.js",
-    "typecheck": "tsc --noEmit"
+    "start": "remix-serve ./build/index.js"
   },
   "dependencies": {
     "@remix-run/css-bundle": "^2.5.1",
